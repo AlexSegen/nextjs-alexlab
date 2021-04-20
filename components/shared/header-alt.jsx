@@ -29,7 +29,7 @@ const Header = () => {
                             <NavItem href="/">Home</NavItem>
                             <NavItem href="/career">Career</NavItem>
                             <NavItem href="/portfolio"><i className="inline-flex w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 animate-ping"></i> Portfolio</NavItem>
-                            <NavItem href="#contact">Contact</NavItem>
+                            <NavItem href="/#contact">Contact</NavItem>
                         </nav>
                     </div>
                 </div>

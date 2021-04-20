@@ -13,8 +13,8 @@ const Hero = () => {
                     <div className="w-2/4 text-xl text-left">
                         <h4 className="mb-1 text-4xl font-bold text-green-500">Alejandro Vivas</h4>
                         <h1 className="text-5xl font-bold text-white mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
-                        <p className="mb-4">
-                            Based in Santiago, Chile; with more than 6 years working as a Frontend Developer and Web Designer, building modern solutions for small and big companies.
+                        <p className="mb-4 font-normal text-gray-300">
+                            Hello, I'm Alejandro, currently based in Santiago, Chile. I have 6+ years of experience in software development & IT industry as an IT Professional. I have expertise and experience in JS full stack web development building modern solutions for small and big companies.
                         </p>
 
                         <div className="mt-4">
