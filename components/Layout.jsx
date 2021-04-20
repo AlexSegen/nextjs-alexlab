@@ -1,24 +1,34 @@
 import Head from 'next/head'
+import { useContext } from "react";
 
-import Header from "./shared/Header"
+import Header from "./shared/header-alt";
+import Footer from "./shared/footer";
+import { ConfigContext } from "../contexts/ConfigContext";
 
-const Layout = ({children}) => {
-    
+const Layout = ({ location, title, description, wided, children }) => {
+  const context = useContext(ConfigContext);
 
-    return ( 
-        <>
-        <Head>
-            <title>Create Next App</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+  const container = wided ? "" : "container mx-auto";
 
-        <main>
-            <Header/>
-            {children}
-        </main>
+  return (
+    <div className="min-h-screen bg-black">
+      <Head>
+        <title>
+          {title ? `${title} | Alejandro Vivas - Frontend Developer` : context.title}
+        </title>
+        <meta
+          name="description"
+          content={description || "Alejandro Vivas - Frontend Developer."}
+        />
+      </Head>
+      <Header />
 
-        </>
-     );
-}
- 
+      <main className={`${container}`}>
+        {children}
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
 export default Layout;

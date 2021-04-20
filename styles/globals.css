@@ -1,9 +1,15 @@
 @tailwind base;
 @tailwind components;
 
-
 .text-primary {
     @apply text-blue-500
+}
+.button {
+    @apply px-6 py-2 text-base font-semibold text-center text-white bg-gray-900 rounded focus:outline-none hover:bg-gray-800 focus:bg-black ;
+}
+
+.button.is-primary {
+    @apply bg-gradient-to-l from-green-400 to-indigo-500 hover:from-green-500 hover:to-indigo-600;
 }
 
 @tailwind utilities;
