@@ -17,7 +17,7 @@ const About =  () => {
             <div className="container mx-auto">
 
                 <div className="p-10 text-center">
-                    <h2 className="mb-10 text-3xl font-bold text-white md:text-5xl">Popular Frameworks</h2>
+                    <h2 className="mb-10 text-3xl font-bold text-white md:text-5xl">My favorite stacks</h2>
                     <p className="mb-4 text-gray-400">
                         I have huge experience working with <strong className="font-semibold text-white">Angular, React, VueJS and NodeJS</strong>. And I love taking care of <strong className="font-semibold text-white">UI / UX design</strong> , look and feel, user interaction and responsive behaviour.
                     </p>
