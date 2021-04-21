@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from "react"
+import { Menu, Transition } from '@headlessui/react';
 
 const Header = () => {
 
@@ -14,9 +15,9 @@ const Header = () => {
 
 
     return ( 
-        <header className={` w-full transition duration-150 ${scrollPosition > 400 ? 'bg-gray-900 fixed top-0 z-20':'bg-black'}`}>
+        <header className={` w-full transition duration-150 p-4 lg:p-0 ${scrollPosition > 400 ? 'bg-gray-900 fixed top-0 z-40':'bg-black'}`}>
             <div className="container w-full mx-auto">
-                <div className="flex items-center">
+                <div className="relative flex items-center justify-between w-full lg:justify-center">
                     <div className="w-40">
                         <Link href="/">
                             <a className="block font-mono font-semibold text-white uppercase whitespace-nowrap">
@@ -24,11 +25,29 @@ const Header = () => {
                             </a>
                         </Link>
                     </div>
-                    <div className="w-full">
-                        <nav className="flex justify-end w-full">
+                    <Menu as="div" className="md:hidden">
+                        {({open}) => (
+                            <>
+                                <Menu.Button className={`button lg:hidden focus:bg-green-400 hover:bg-green-400 ${open ? 'bg-green-400':'bg-gray-400'} text-black flex justify-center items-center p-0 w-10 h-10`}>
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                                </Menu.Button>
+
+                                <Menu.Items className="absolute z-40 w-full bg-gray-800 rounded md:relative lg:block md:bg-transparent md:-bottom-0 -bottom-80">
+                                    <nav className="justify-end block w-full md:flex">
+                                        <NavItem href="/">Home</NavItem>
+                                        <NavItem href="/career">Career</NavItem>
+                                        <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
+                                        <NavItem href="/#contact">Contact</NavItem>
+                                    </nav>
+                                </Menu.Items>
+                            </>
+                        )}
+                    </Menu>
+                    <div className="hidden w-full md:block">
+                        <nav className="justify-end block w-full md:flex">
                             <NavItem href="/">Home</NavItem>
                             <NavItem href="/career">Career</NavItem>
-                            <NavItem href="/portfolio"><i className="inline-flex w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 animate-ping"></i> Portfolio</NavItem>
+                            <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
                             <NavItem href="/#contact">Contact</NavItem>
                         </nav>
                     </div>

@@ -18,10 +18,10 @@ const CheckIcon  = () => <svg className="inline w-6 h-6 mr-2 text-green-400" fil
 const ProjectDetails = ({ project }) => {
 
     return (
-        <div className="grid grid-cols-12">
+        <div className="block grid-cols-12 md:grid">
             <div className="col-span-4 p-4">
                 <div className="p-10">
-                    <h4 className="mt-10 mb-1 text-4xl font-bold">{project.title}</h4>
+                    <h4 className="mt-10 mb-1 text-3xl font-bold md:text-4xl">{project.title}</h4>
                     <p className="mb-10 text-xl font-semibold text-gray-500">{project.category}</p>
 
                     <p className="mb-10 text-gray-400">
@@ -77,8 +77,8 @@ const ProjectDetails = ({ project }) => {
 
             </div>
 
-            <div className="col-span-8 p-4">
-                <div className="p-8">
+            <div className="col-span-8 p-2 md:p-4">
+                <div className="p-2 md:p-8">
 
                     <Slider {...settings}>
 

@@ -52,7 +52,7 @@ const FilteredPortfolio = () => {
                 <img src="/img/coding_workspace.jpg" className="absolute top-0 w-full transform -translate-y-1/2 opacity-20" alt=""/>
             </div>
             <div className="container py-20 mx-auto text-gray-400">
-                <h2 className="mb-6 text-5xl font-bold text-white"><span className="text-gray-400 uppercase">{catslug}</span> Design</h2>
+                <h2 className="mb-6 text-4xl font-bold text-center text-white md:text-left md:text-5xl"><span className="text-gray-400 uppercase">{catslug}</span> Design</h2>
 
                 {
                     filtered.map(project => (

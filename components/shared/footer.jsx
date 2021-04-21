@@ -5,9 +5,9 @@ import ContactForm from '../contact/ContactForm';
 const Footer = () => {
 
     return ( 
-        <footer id="contact" className={`px-5 py-10 bg-black relative`}>
-            <div className="container relative z-20 flex max-w-6xl mx-auto">
-                <div className="w-1/2 p-10">
+        <footer id="contact" className={`px-5 py-20 md:py-10 bg-black relative`}>
+            <div className="container relative z-20 grid max-w-6xl grid-cols-8 mx-auto md:flex">
+                <div className="hidden w-1/2 p-2 md:p-10 md:block ">
                     <h3 className="mb-4 text-xl font-semibold text-gray-300">Sections</h3>
 
                     <nav>
@@ -20,12 +20,12 @@ const Footer = () => {
                     
                     
                 </div>
-                <div className="w-1/2 p-10">
+                <div className="w-1/2 col-span-8 p-2 md:p-10">
                     <h3 className="mb-4 text-xl font-semibold text-gray-300">Social Network</h3>
                     <p className="mb-6 text-gray-400">You can reach me at</p>
                     <SocialList/>
                 </div>
-                <div className="w-full p-10">
+                <div className="w-full col-span-8 p-2 md:p-10">
                     <h3 className="mb-4 text-xl font-semibold text-gray-300">Send me a message</h3>
                     <p className="mb-6 text-gray-400">Leave me a message, I will contact you as soon as possible.</p>
                     <ContactForm/>
