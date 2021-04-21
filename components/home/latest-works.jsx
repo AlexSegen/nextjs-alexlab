@@ -48,11 +48,11 @@ export function Slide({ project }) {
     return (
         <div className="grid grid-cols-12">
             <div className="col-span-12 p-4 md:col-span-4">
-                <div className="p-10">
-                    <h4 className="mt-10 mb-1 text-4xl font-bold">{project.title}</h4>
-                    <p className="mb-10 text-xl font-semibold text-gray-500">{project.category}</p>
+                <div className="p-2 md:p-10">
+                    <h4 className="mt-5 mb-1 text-2xl font-bold md:mt-10 md:text-4xl">{project.title}</h4>
+                    <p className="mb-5 text-lg font-semibold text-gray-500 md:mb-10 md:text-xl">{project.category}</p>
 
-                    <p className="mb-10 text-gray-400">
+                    <p className="mb-5 text-gray-400 md:mb-10">
                         {project.description}
                     </p>
 

@@ -46,13 +46,13 @@ const FilteredPortfolio = () => {
                             <a className="font-semibold text-gray-400 hover:text-gray-300">Portfolio</a>
                         </Link>
                         <span className="mx-2 text-gray-500">/</span>
-                        <span className="font-semibold text-gray-500"><span className="initial">{ catslug }</span> Design</span>
+                        <span className="font-semibold text-gray-500"><span className="uppercase">{ catslug } </span>Design</span>
                     </div>
                 </div>
                 <img src="/img/coding_workspace.jpg" className="absolute top-0 w-full transform -translate-y-1/2 opacity-20" alt=""/>
             </div>
-            <div className="container py-20 mx-auto text-gray-400">
-                <h2 className="mb-6 text-4xl font-bold text-center text-white md:text-left md:text-5xl"><span className="text-gray-400 uppercase">{catslug}</span> Design</h2>
+            <div className="container py-5 mx-auto text-gray-400 md:py-20">
+                <h2 className="mb-2 text-4xl font-bold text-center text-white md:mb-6 md:text-left md:text-5xl"><span className="text-gray-400 uppercase">{catslug}</span>Design</h2>
 
                 {
                     filtered.map(project => (

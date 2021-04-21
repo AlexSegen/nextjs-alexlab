@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import Header from "./shared/header-alt";
 import Footer from "./shared/footer";
@@ -8,10 +8,17 @@ import { ConfigContext } from "../contexts/ConfigContext";
 const Layout = ({ location, title, description, wided, children }) => {
   const context = useContext(ConfigContext);
 
-  const container = wided ? "" : "container mx-auto";
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() =>{
+      document.addEventListener('scroll', function(e) {
+          setScrollPosition(window.scrollY)
+      });
+  }, []);
+
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className={`min-h-screen bg-black ${scrollPosition > 400 ? 'pt-20':''}`}>
       <Head>
         <title>
           {title ? `${title} | Alejandro Vivas - Frontend Developer` : context.title}
@@ -23,7 +30,7 @@ const Layout = ({ location, title, description, wided, children }) => {
       </Head>
       <Header />
 
-      <main className={`${container}`}>
+      <main className={wided ? "" : "container mx-auto"}>
         {children}
       </main>
       <Footer />

@@ -6,15 +6,16 @@ const Hero = () => {
     const base = "button inline-flex py-2 mx-2 md:px-8 px-4"
     
     return (
-        <div className={`${styles.hero__wrapper}  relative flex items-center justify-center w-full min-h-full md:min-h-screen bg-black`}>
+        <div className={`${styles.hero__wrapper} relative flex items-center justify-center w-full min-h-screen bg-black md:mt-0 -mt-20 z-0`}>
 
-            <div className="container mx-auto">
+            <div className="container pb-20 mx-auto md:pb-0">
                 <div className="relative z-10 justify-center block w-full p-4 mx-auto text-white md:p-10 md:flex">
                     <div className="text-lg text-left md:w-2/4 md:text-xl">
                         <h4 className="mb-1 text-2xl font-bold text-green-500 md:text-4xl">Alejandro Vivas</h4>
                         <h1 className="mb-8 text-4xl font-bold text-white md:text-5xl md:mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
                         <p className="mb-4 font-normal text-gray-300">
-                            Hello, I'm Alejandro, currently based in Santiago, Chile. I have 6+ years of experience in software development & IT industry as an IT Professional. I have expertise and experience in JS full stack web development building modern solutions for small and big companies.
+                            Hello, I'm Alejandro, currently based in Santiago, Chile. I have 6+ years of experience in software development & IT industry as an IT Professional. 
+                            <span className="hidden md:inline"> I have expertise and experience in JS full stack web development building modern solutions for small and big companies.</span>
                         </p>
 
                         <div className="mt-8 mb:mt-4">

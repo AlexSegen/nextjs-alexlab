@@ -21,13 +21,13 @@ const Portfolio = () => {
 
                 <Link href="/portfolio/web">
                     <a  className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
-                        <span className="text-gray-400">Web</span> Design   
+                        <span className="text-gray-400">Web</span>Design   
                     </a>
                 </Link>
 
                 <Link href="/portfolio/ui" >
                     <a  className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
-                        <span className="text-gray-400">UI</span> Design   
+                        <span className="text-gray-400">UI</span>Design   
                     </a>
                 </Link>
 
