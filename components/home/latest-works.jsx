@@ -53,10 +53,10 @@ export function Slide({ project }) {
                         {project.description}
                     </p>
                     <div>
-                        <Link href={`/mywork/${project.slug}`}>
+                        <Link href={`/portfolio/details/${project.id}`}>
                             <a className="block mb-4 mr-2 text-lg is-primary button">Project details</a>
                         </Link>
-                        <Link href="/mywork">
+                        <Link href="/portfolio">
                             <a className="block text-lg font-normal underline bg-transparent button">More projects</a>
                         </Link>
                     </div>
