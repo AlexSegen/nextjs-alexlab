@@ -91,24 +91,24 @@ const Career = () => {
                     </div>
                 </div>
 
-                <div className="p-2">
+                <div className="p-2 mb-10">
                     <h3 className="mb-10 text-3xl font-semibold text-white">Experience</h3>
 
                     <div className="relative pt-4 pl-10 mb-10 border-l-2 border-gray-600 border-opacity-50 border-dashed">
-                        <svg className="absolute w-10 h-10 -top-4 -left-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <svg className="absolute w-8 h-8 -top-2 -left-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         <ExperienceItem
                             className="bg-gray-800"
-                            company = "Frontend Developer / Web Designer / Web Developer"
-                            period="2012 - now"
-                            rol="Network Administrator and HelpDesk"
-                            description="I build websites for small and big companies to help them have presence on Internet using different web technologies. Also responsible for create new UI Designs to enchance existing web/apps visual presentation."
-                        />
-                        <ExperienceItem
-                            className="bg-gray-900"
-                            company = "Chileautos SpA"
+                            company = "Chileautos SpA (Carsales Network)"
                             period="2018 - now"
                             rol="Software Engineer"
                             description="Using agile methods, responsible for mantaining and building new solutions for retail vehicles ecommerces in different countries around Carsales Co. Network. Developing frontend and backend solutions using Reactjs, Angular, VueJS, NetCore C#, CI/CD, AWS, NodeJS apps and functional programming."
+                        />
+                        <ExperienceItem
+                            className="bg-gray-900"
+                            company = "Freelance"
+                            period="2012 - now"
+                            rol="Frontend Developer / Web Designer / Web Developer"
+                            description="I build websites for small and big companies to help them have presence on Internet using different web technologies. Also responsible for create new UI Designs to enchance existing web/apps visual presentation."
                         />
                         <ExperienceItem
                             className="bg-gray-800"
@@ -127,6 +127,24 @@ const Career = () => {
                     </div>
                 </div>
 
+            
+                <div className="p-2 mb-10">
+                    <div className="block">
+                        <div className="py-2">
+                            <div className="p-4 border border-gray-500 border-dashed rounded">
+                                <h3 className="mb-4 text-xl font-semibold text-white md:mb-10 md:text-3xl">Tools I use</h3>
+                                <div>
+                                    <Skill caption="Jira"/>
+                                    <Skill caption="Postman"/>
+                                    <Skill caption="Api Rest"/>
+                                    <Skill caption="Git"/>
+                                    <Skill caption="VS Code"/>
+                                    <Skill caption="Terminal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </Layout>
