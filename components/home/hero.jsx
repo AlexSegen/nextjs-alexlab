@@ -57,7 +57,7 @@ const Hero = () => {
                                 <a className={`${base} is-primary whitespace-nowrap mr-2 text-base md:text-2xl`}>Contact me!</a>
                             </Link>
                             <Link href="/portfolio">
-                                <a className={`${base} bg-transparent border-transparent inline-flex items-center whitespace-nowrap  md:text-base`}>
+                                <a className={`${base} bg-transparent border-transparent inline-flex items-center whitespace-nowrap text-base md:text-2xl`}>
                                     My Portfolio
                                     <svg className="w-6 h-6 ml-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                 </a>
