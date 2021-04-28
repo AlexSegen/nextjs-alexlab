@@ -4,8 +4,8 @@ const resultReducer = (state, action) => {
             return action.data = {
                 show: true,
                 message: "Your message was send. I will contact you ASAP. Thanks!",
-                short: "Very good!",
-                type: "text-green-400"
+                short: "Good!",
+                type: "green-400"
             }
 
         case "ERROR":
@@ -13,7 +13,7 @@ const resultReducer = (state, action) => {
                 show: true,
                 message: "There was a problem sending your message. Please, try again.",
                 short: "Oops: ",
-                type: "text-red-400"
+                type: "red-400"
             }
 
         case "VALIDATION_ERROR":
@@ -24,7 +24,7 @@ const resultReducer = (state, action) => {
                 show: false,
                 message: "",
                 short: "",
-                type: "primary"
+                type: "gray-900"
             };
     
         default:

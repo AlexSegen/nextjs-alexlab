@@ -5,11 +5,15 @@ import About from '../components/home/about';
 import ContactBar from '../components/shared/contact-bar';
 import LatestWorks from '../components/home/latest-works';
 
+import { useTheme } from '../hooks/useTheme';
+
 const Home = () => {
+
+    const { darkMode } = useTheme();
 
     return ( 
         <Layout wided={true}>
-            <Hero/>
+            <Hero darkMode={darkMode}/>
             <About/>
             <LatestWorks/>
             <ContactBar 

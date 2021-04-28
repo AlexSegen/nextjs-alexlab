@@ -1,32 +1,37 @@
 import Link from 'next/link'
 import styles from './hero.module.scss';
 
-const Hero = () => {
+const Hero = ({darkMode}) => {
 
     const base = "button inline-flex py-2 mx-2 md:px-8 px-4"
     
     return (
-        <div className={`${styles.hero__wrapper} relative flex items-center justify-center w-full min-h-screen bg-black md:mt-0 -mt-20 z-0`}>
-            <div className="absolute top-0 bottom-0 left-0 right-0 hidden overflow-hidden md:block">
-                <video className="w-full" controls={false} autoPlay={true} muted={true} loop={true}>
-                    <source src="/img/video.webm" type="video/webm"/>
-                    <source src="/img/video.mp4" type="video/mp4"/>
-                    Your browser does not support the video tag.
-                </video>
-                <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-50"></div>
-            </div>
+        <div className={`${styles.hero__wrapper} ${ !darkMode ? styles.is__light : ''} relative flex items-center justify-center w-full min-h-screen bg-gray-50 dark:bg-black md:mt-0 -mt-20 z-0`}>
+
+            {
+                darkMode && (
+                    <div className="absolute top-0 bottom-0 left-0 right-0 hidden overflow-hidden md:block">
+                        <video className="w-full" controls={false} autoPlay={true} muted={true} loop={true}>
+                            <source src="/img/video.webm" type="video/webm"/>
+                            <source src="/img/video.mp4" type="video/mp4"/>
+                            Your browser does not support the video tag.
+                        </video>
+                        <div className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-50"></div>
+                    </div>
+                )
+            }
 
             <div className="container pb-20 mx-auto md:pb-0">
-                <div className="relative z-10 justify-center block w-full p-4 mx-auto text-white md:p-10 md:flex">
+                <div className="relative z-10 justify-center block w-full p-4 mx-auto dark:text-white md:p-10 md:flex">
                     <div className="text-lg text-left md:w-2/4 md:text-xl">
                         <h4 className="mb-1 text-2xl font-bold text-green-500 md:text-4xl">Alejandro Vivas</h4>
-                        <h1 className="mb-8 text-4xl font-bold text-white md:text-5xl md:mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
-                        <p className="mb-4 font-normal text-gray-300">
+                        <h1 className="mb-8 text-4xl font-bold text-gray-700 dark:text-white md:text-5xl md:mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
+                        <p className="mb-4 font-normal text-gray-600 dark:text-gray-300">
                             Hello, I'm Alejandro, currently based in Santiago, Chile. I have 6+ years of experience in software development & IT industry as an IT Professional. 
                             <span className="hidden md:inline"> I have expertise and experience in JS full stack web development building modern solutions for small and big companies.</span>
                         </p>
 
-                        <div className="mt-8 mb:mt-4">
+                        <div className="mt-8 opacity-50 mb:mt-4 dark:bg-opacity-100">
                             <dl className="flex items-center mb-4 text-xs font-semibold tracking-wide uppercase">
                                 <dd className="flex items-center ">
                                     <svg viewBox="0 0 29 29" width="29" height="29" fill="none" className="flex-none mr-2"><g filter="url(#react-logo-filter-0)"><ellipse cx="14.75" cy="14.106" rx="13.25" ry="5.25" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></ellipse></g><g filter="url(#react-logo-filter-1)"><ellipse cx="14.75" cy="14.099" rx="13.25" ry="5.25" transform="rotate(-60 14.75 14.1)" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></ellipse></g><g filter="url(#react-logo-filter-2)"><ellipse cx="14.75" cy="14.1" rx="13.25" ry="5.25" transform="rotate(-120 14.75 14.1)" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></ellipse></g><circle cx="14.75" cy="14.106" r="2" fill="#1F2937" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></circle><defs><filter id="react-logo-filter-0" x=".75" y="7.106" width="28" height="13" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="-1"></feOffset><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></feColorMatrix><feBlend in2="shape" result="effect1_innerShadow"></feBlend></filter><filter id="react-logo-filter-1" x="5.964" y=".575" width="17.572" height="26.047" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="-1"></feOffset><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></feColorMatrix><feBlend in2="shape" result="effect1_innerShadow"></feBlend></filter><filter id="react-logo-filter-2" x="5.964" y=".576" width="17.572" height="26.047" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="-1"></feOffset><feGaussianBlur stdDeviation=".5"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></feColorMatrix><feBlend in2="shape" result="effect1_innerShadow"></feBlend></filter></defs></svg>

@@ -8,13 +8,13 @@ const initialResult = {
     show: false,
     message: "",
     short: "",
-    type: "primary"
+    type: "blue-400"
 }
 
 const initialPayload = {
     name: "",
     email: "",
-    subject: "New message from AlexLab",
+    subject: "New message from avivas.dev",
     content: ""
 }
 
@@ -67,7 +67,7 @@ const ContactForm = () => {
                     show: true,
                     message: result.error.details[0].message,
                     short: "Hey,",
-                    type: "text-yellow-400"
+                    type: "blue-400"
                 }
             });
 
@@ -88,7 +88,7 @@ const ContactForm = () => {
                             <div className="px-4">
                                 <span className="text-green-500"><i className=" icons icon-user"></i></span>
                             </div>
-                            <input type="text" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Full name"
+                            <input type="text" className="w-full text-gray-500 bg-gray-100 border-gray-200 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-800" placeholder="Full name"
                                 name="name"
                                 disabled={loading}
                                 value={payload.name}
@@ -99,7 +99,7 @@ const ContactForm = () => {
                             <div className="px-4">
                                 <span className="text-green-500"><i className=" icons icon-envelope"></i></span>
                             </div>
-                            <input type="email" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Email address"
+                            <input type="email" className="w-full text-gray-500 bg-gray-100 border-gray-200 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-800" placeholder="Email address"
                                 name="email"
                                 disabled={loading}
                                 value={payload.email}
@@ -108,16 +108,25 @@ const ContactForm = () => {
                     </div>
 
 
-                    <div className="mb-4">
-                        <textarea className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Your message" cols="30" rows="3"
+                    <div className="mb-0">
+                        <textarea className="w-full text-gray-500 bg-gray-100 border-gray-200 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-800" placeholder="Your message" cols="30" rows="3"
                             name="content"
                             disabled={loading}
                             value={payload.content}
                             onChange={handleChange}></textarea>
                     </div>
                         {
-                            result.show ? <div className={`p-2 text-center ${result.type}`}> <strong>{result.short}</strong> {result.message}</div> : null
+                            result.show && !loading ? (
+                                <div className="p-2 text-right">
+                                    <div className="inline-flex items-center p-2 text-sm leading-none text-gray-500 bg-white rounded-full shadow dark:text-gray-300 dark:bg-gray-900 text-teal">
+                                        <span className={`inline-flex text-white rounded-full h-6 px-3 justify-center items-center bg-${result.type}`}>{result.short}</span>
+                                        <span className="inline-flex px-2">{result.message}</span>
+                                    </div>
+                                </div>
+                            ) : null
                         }
+
+
                     <div className="text-right">
                         <button type="submit" className="button is-primary" disabled={loading}>
                             {loading ? 'Sending...' : 'Send message' }

@@ -20,10 +20,10 @@ const ProjectCarousel = () => {
     const { projects } = useContext(ConfigContext);
 
     return (
-        <section className="flex items-center justify-center w-full min-h-screen py-8 text-white bg-black">
+        <section className="flex items-center justify-center w-full min-h-screen py-8 text-gray-600 dark:text-white bg-gray-50 dark:bg-black">
             <div className="container mx-auto">
                 <div className="px-4">
-                    <h2 className="mb-5 text-3xl font-bold text-center md:text-5xl">Recent Projects</h2>
+                    <h2 className="mb-5 text-3xl font-bold text-center text-gray-700 md:text-5xl dark:text-white">Recent Projects</h2>
 
                     <div className="px-4 md:px-0">
                         <Slider {...settings}>
@@ -49,14 +49,14 @@ export function Slide({ project }) {
         <div className="grid grid-cols-12">
             <div className="col-span-12 p-4 md:col-span-4">
                 <div className="p-2 md:p-10">
-                    <h4 className="mt-5 mb-1 text-2xl font-bold md:mt-10 md:text-4xl">{project.title}</h4>
-                    <p className="mb-5 text-lg font-semibold text-gray-500 md:mb-10 md:text-xl">{project.category}</p>
+                    <h4 className="mt-5 mb-1 text-2xl font-bold text-gray-700 md:mt-10 md:text-4xl dark:text-gray-500">{project.title}</h4>
+                    <p className="mb-5 text-lg font-semibold text-gray-700 dark:text-gray-500 md:mb-10 md:text-xl">{project.category}</p>
 
-                    <p className="mb-5 text-gray-400 md:mb-10">
+                    <p className="mb-5 text-gray-500 dark:text-gray-400 md:mb-10">
                         {project.description}
                     </p>
 
-                    <img className="block mx-auto my-8" src={project.media.img} alt={project.title}/>
+                    <img className="hidden mx-auto my-8" src={project.media.img} alt={project.title}/>
 
                     <div>
                         {
@@ -67,11 +67,10 @@ export function Slide({ project }) {
                             )
                         }
                         <Link href="/portfolio">
-                            <a className="block text-lg font-normal underline bg-transparent button">More projects</a>
+                            <a className="block text-lg font-semibold bg-gray-100 border border-gray-200 dark:bg-transparent button hover:bg-gray-50 dark:hover:bg-gray-900">More projects</a>
                         </Link>
                     </div>
                 </div>
-
             </div>
 
             <div className="hidden col-span-12 p-4 md:block md:col-span-8">

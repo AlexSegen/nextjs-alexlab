@@ -1,4 +1,4 @@
-
+import ThemeContextProvider from "../contexts/ThemeContext";
 import ConfigContextProvider from "../contexts/ConfigContext";
 
 import 'simple-line-icons/css/simple-line-icons.css';
@@ -9,7 +9,9 @@ import '../styles/animations.css'
 function MyApp({ Component, pageProps }) {
   return (
     <ConfigContextProvider>
-        <Component {...pageProps} />
+        <ThemeContextProvider>
+          <Component {...pageProps} />
+        </ThemeContextProvider>
     </ConfigContextProvider>
   )
 }
