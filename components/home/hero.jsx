@@ -8,7 +8,7 @@ const Hero = () => {
     return (
         <div className={`${styles.hero__wrapper} relative flex items-center justify-center w-full min-h-screen bg-black md:mt-0 -mt-20 z-0`}>
             <div className="absolute top-0 bottom-0 left-0 right-0 hidden overflow-hidden md:block">
-                <video className="w-full" controls={false} autoplay="true" muted={true} loop={true}>
+                <video className="w-full" controls={false} autoPlay={true} muted={true} loop={true}>
                     <source src="/img/video.webm" type="video/webm"/>
                     <source src="/img/video.mp4" type="video/mp4"/>
                     Your browser does not support the video tag.

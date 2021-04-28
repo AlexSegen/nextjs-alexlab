@@ -37,6 +37,8 @@ const Header = () => {
                                         <NavItem href="/">Home</NavItem>
                                         <NavItem href="/career">Career</NavItem>
                                         <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
+                                        <NavItem href="https://toastmejs.netlify.app/">Toastme JS</NavItem>
+                                        
                                         <NavItem href="/#contact">Contact</NavItem>
                                     </nav>
                                 </Menu.Items>
@@ -48,6 +50,7 @@ const Header = () => {
                             <NavItem href="/">Home</NavItem>
                             <NavItem href="/career">Career</NavItem>
                             <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
+                            <NavItem target="_blank" href="https://toastmejs.netlify.app/">Toastme JS</NavItem>
                             <NavItem href="/#contact">Contact</NavItem>
                         </nav>
                     </div>
@@ -59,10 +62,10 @@ const Header = () => {
      );
 }
 
-function NavItem({href, children}) {
+function NavItem({href, children, ...props}) {
 
     return (<Link href={href}>
-                <a className="block px-6 py-6 font-semibold text-gray-400 hover:text-white">
+                <a  className="block px-4 py-6 font-semibold text-gray-400 hover:text-white" {...props} >
                     {children}
                 </a>
             </Link>)

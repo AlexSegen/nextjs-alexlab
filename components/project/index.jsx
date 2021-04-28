@@ -31,11 +31,11 @@ const ProjectDetails = ({ project }) => {
                     <div className="mb-10">
 
                         {
-                            project.url  && (<a target="_blank"  href={project.url} className="mb-4 mr-2 text-lg is-primary button">Preview</a>)
+                            project.url  && (<a target="_blank"  href={project.url} className="mb-4 mr-2 text-lg is-primary button">Live preview</a>)
                         }
 
-                        <Link href={`/portfolio/details/${project.id}`}>
-                            <a className="text-lg font-normal button ">Details</a>
+                        <Link href={`/portfolio`}>
+                            <a className="text-lg font-normal button ">More projects</a>
                         </Link>
                     </div>
 

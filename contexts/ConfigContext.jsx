@@ -5,7 +5,7 @@ import { projects } from "./data";
 export const ConfigContext = createContext();
 
 const initialState =  {
-    title: "Bienvenido | Alejandro Vivas - Frontend Developer",
+    title: "Alejandro Vivas - Frontend Developer",
     description: "Alejandro Vivas - Frontend Developer.",
     author: "alexsegen",
     twitter: "https://twitter.com/pixelagil",
