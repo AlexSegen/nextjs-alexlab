@@ -24,7 +24,7 @@ const Hero = ({darkMode}) => {
             <div className="container pb-20 mx-auto md:pb-0">
                 <div className="relative z-10 justify-center block w-full p-4 mx-auto dark:text-white md:p-10 md:flex">
                     <div className="text-lg text-left md:w-2/4 md:text-xl">
-                        <h4 className="mb-1 text-2xl font-bold text-green-500 md:text-4xl">Alejandro Vivas</h4>
+                        <h4 className="mb-1 text-2xl font-bold text-gray-500 dark:text-green-500 md:text-4xl">Alejandro Vivas</h4>
                         <h1 className="mb-8 text-4xl font-bold text-gray-700 dark:text-white md:text-5xl md:mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
                         <p className="mb-4 font-normal text-gray-600 dark:text-gray-300">
                             Hello, I'm Alejandro, currently based in Santiago, Chile. I have 6+ years of experience in software development & IT industry as an IT Professional. 

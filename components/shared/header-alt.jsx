@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import { useState, useEffect, useContext } from "react"
 import { Menu } from '@headlessui/react';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { useTheme } from '../../hooks/useTheme';
 
 const Header = () => {
 
+    const { darkMode, toggleTheme } = useTheme();
     const [scrollPosition, setScrollPosition] = useState(0);
-    const { darkMode, setDarkMode, loadThemeConfig, toggleTheme } = useContext(ThemeContext);
 
     useEffect(() => {
-        document.addEventListener('scroll', function(e) {
+        document.addEventListener('scroll', function() {
             setScrollPosition(window.scrollY)
         });
     }, []);
@@ -55,8 +55,13 @@ const Header = () => {
                             <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
                             <NavItem target="_blank" href="https://toastmejs.netlify.app/">Toastme JS</NavItem>
                             <NavItem href="/#contact">Contact</NavItem>
-                            <NavItem onClick={toggleTheme} href="#!">
+                            <NavItem onClick={toggleTheme}>
+                                {darkMode ? (
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                                    ):(
+                                        
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                                )}
                             </NavItem>
                         </nav>
                     </div>
@@ -70,11 +75,17 @@ const Header = () => {
 
 function NavItem({href, children, ...props}) {
 
-    return (<Link href={href} {...props}>
-        <a  className="block px-4 py-4 font-semibold text-gray-500 md:py-6 hover:text-gray-400 focus:text-gray-600 darK:text-gray-400 darK:hover:text-white" {...props} >
+    return href ? (
+        <Link href={href} {...props}>
+            <a  className="block px-4 py-4 font-semibold text-gray-500 md:py-6 hover:text-gray-400 focus:text-gray-600 darK:text-gray-400 darK:hover:text-white" {...props} >
+                {children}
+            </a>
+        </Link>
+    ) : (
+        <button  type="button" className="block px-4 py-4 font-semibold text-gray-500 focus:outline-none md:py-6 hover:text-gray-400 focus:text-gray-600 darK:text-gray-400 darK:hover:text-white" {...props}>
             {children}
-        </a>
-    </Link>)
+        </button>
+    )
 }
  
 export default Header;

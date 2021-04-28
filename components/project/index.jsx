@@ -21,10 +21,10 @@ const ProjectDetails = ({ project }) => {
         <div className="block grid-cols-12 md:grid">
             <div className="col-span-4 p-4">
                 <div className="p-2 md:p-10">
-                    <h4 className="mt-2 mb-1 text-2xl font-bold md:mt-10 md:text-4xl">{project.title}</h4>
-                    <p className="mb-5 text-lg font-semibold text-gray-500 md:text-xl md:mb-10">{project.category}</p>
+                <h4 className="mt-5 mb-1 text-2xl font-bold text-gray-700 md:mt-10 md:text-4xl dark:text-gray-500">{project.title}</h4>
+                <p className="mb-5 text-lg font-semibold text-gray-600 dark:text-gray-500 md:mb-10 md:text-xl">{project.category}</p>
 
-                    <p className="mb-10 text-gray-400">
+                    <p className="mb-5 text-gray-500 dark:text-gray-400 md:mb-10">
                         {project.description}
                     </p>
 
@@ -35,7 +35,7 @@ const ProjectDetails = ({ project }) => {
                         }
 
                         <Link href={`/portfolio`}>
-                            <a className="text-lg font-normal button ">More projects</a>
+                            <a className="text-lg font-normal button">More projects</a>
                         </Link>
                     </div>
 
@@ -44,7 +44,7 @@ const ProjectDetails = ({ project }) => {
                         {
                             project.tech && (
                                 <>
-                                    <h3 className="mb-4 font-semibold text-white">Tech & Tools</h3>
+                                    <h3 className="mb-4 font-semibold text-gray-700 dark:text-white">Tech & Tools</h3>
                                     <ul className="mb-4 text-gray-400">
 
                                         {
