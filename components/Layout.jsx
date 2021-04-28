@@ -5,7 +5,7 @@ import Header from "./shared/header-alt";
 import Footer from "./shared/footer";
 import { ConfigContext } from "../contexts/ConfigContext";
 
-const Layout = ({ location, title, description, wided, children }) => {
+const Layout = ({ location, title, description, wided, children, className }) => {
   const context = useContext(ConfigContext);
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -18,7 +18,7 @@ const Layout = ({ location, title, description, wided, children }) => {
 
 
   return (
-    <div className={`min-h-screen bg-black ${scrollPosition > 400 ? 'pt-20':''}`}>
+    <div className={`min-h-screen bg-white dark:bg-black ${scrollPosition > 400 ? 'pt-20':''} ${className}`}>
       <Head>
         <title>
           {title ? `${title} | Alejandro Vivas - Frontend Developer` : context.title}
