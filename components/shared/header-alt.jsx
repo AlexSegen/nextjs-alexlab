@@ -10,7 +10,10 @@ const Header = () => {
 
 
     const isActive = (str, hash) => {
-        return window.location.pathname === str //|| window.location.hash === hash;
+        if (process.browser)
+            return window.location.pathname === str //|| window.location.hash === hash;
+
+        return false;
     }
 
     useEffect(() => {
