@@ -3,6 +3,7 @@ import Link  from 'next/link';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTheme } from '../../hooks/useTheme';
 
 var settings = {
     dots: false,
@@ -16,6 +17,8 @@ var settings = {
 const CheckIcon  = () => <svg className="inline w-6 h-6 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
 
 const ProjectDetails = ({ project }) => {
+
+    const { darkMode } = useTheme();
 
     return (
         <div className="block grid-cols-12 md:grid">
@@ -35,7 +38,7 @@ const ProjectDetails = ({ project }) => {
                         }
 
                         <Link href={`/portfolio`}>
-                            <a className="text-lg font-normal button">More projects</a>
+                            <a className={`text-lg font-normal button ${darkMode ? '':'text-white bg-gray-800 hover:bg-gray-700 focus:bg-gray-900 hover:text-white'}`}>More projects</a>
                         </Link>
                     </div>
 

@@ -8,6 +8,11 @@ const Header = () => {
     const { darkMode, toggleTheme } = useTheme();
     const [scrollPosition, setScrollPosition] = useState(0);
 
+
+    const isActive = (str, hash) => {
+        return window.location.pathname === str //|| window.location.hash === hash;
+    }
+
     useEffect(() => {
         document.addEventListener('scroll', function() {
             setScrollPosition(window.scrollY)
@@ -34,13 +39,13 @@ const Header = () => {
 
                                 <Menu.Items className="absolute z-40 w-full rounded bg-gray-50 dark:bg-gray-800 md:hidden -bottom-80 focus:outline-none top-14">
                                     <nav className="justify-end block w-full text-lg md:flex">
-                                        <NavItem href="/">Home</NavItem>
-                                        <NavItem href="/career">Career</NavItem>
-                                        <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
+                                        <NavItem isActive={isActive('/')} href="/">Home</NavItem>
+                                        <NavItem isActive={isActive('/career')} href="/career">Career</NavItem>
+                                        <NavItem isActive={isActive('/portfolio')} href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
                                         <NavItem href="https://toastmejs.netlify.app/">Toastme JS</NavItem>
                                         
-                                        <NavItem href="/#contact">Contact</NavItem>
-                                        <NavItem href="#!">
+                                        <NavItem isActive={isActive(null, '#contact')} href="/#contact">Contact</NavItem>
+                                        <NavItem>
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                                         </NavItem>
                                     </nav>
@@ -50,11 +55,11 @@ const Header = () => {
                     </Menu>
                     <div className="hidden w-full md:block">
                         <nav className="justify-end block w-full md:flex">
-                            <NavItem href="/">Home</NavItem>
-                            <NavItem href="/career">Career</NavItem>
-                            <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
+                            <NavItem isActive={isActive('/')} href="/">Home</NavItem>
+                            <NavItem isActive={isActive('/career')} href="/career">Career</NavItem>
+                            <NavItem isActive={isActive('/portfolio')} href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
                             <NavItem target="_blank" href="https://toastmejs.netlify.app/">Toastme JS</NavItem>
-                            <NavItem href="/#contact">Contact</NavItem>
+                            <NavItem isActive={isActive(null, '#contact')} href="/#contact">Contact</NavItem>
                             <NavItem onClick={toggleTheme}>
                                 {darkMode ? (
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -73,11 +78,14 @@ const Header = () => {
      );
 }
 
-function NavItem({href, children, ...props}) {
+function NavItem({href, isActive, children, ...props}) {
 
     return href ? (
         <Link href={href} {...props}>
-            <a  className="block px-4 py-4 font-semibold text-gray-500 md:py-6 hover:text-gray-400 focus:text-gray-600 darK:text-gray-400 darK:hover:text-white" {...props} >
+            <a  className={`
+            block px-4 py-4 font-semibold  md:py-6 hover:text-gray-400 focus:text-gray-600 darK:text-gray-400 darK:hover:text-white 
+            ${isActive ? 'text-green-500':'text-gray-500'}
+            `} {...props} >
                 {children}
             </a>
         </Link>
