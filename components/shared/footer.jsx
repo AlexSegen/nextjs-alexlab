@@ -11,11 +11,11 @@ const Footer = () => {
                     <h3 className="mb-4 text-xl font-semibold text-gray-300">Sections</h3>
 
                     <nav>
-                        <Link href="/"><a className="block p-2 text-white hover:underline hover:text-green-400">Home</a></Link>
-                        <Link href="/career"><a className="block p-2 text-white hover:underline hover:text-green-400">Career</a></Link>
-                        <Link href="/portfolio/web"><a className="block p-2 text-white hover:underline hover:text-green-400">Web Design</a></Link>
-                        <Link href="/portfolio/ui"><a className="block p-2 text-white hover:underline hover:text-green-400">UI Design</a></Link>
-                        <Link href="/#contact"><a className="block p-2 text-white hover:underline hover:text-green-400">Contact</a></Link>
+                        <Link href="/" className="block p-2 text-white hover:underline hover:text-green-400">Home</Link>
+                        <Link href="/career" className="block p-2 text-white hover:underline hover:text-green-400">Career</Link>
+                        <Link href="/portfolio/web" className="block p-2 text-white hover:underline hover:text-green-400">Web Design</Link>
+                        <Link href="/portfolio/ui" className="block p-2 text-white hover:underline hover:text-green-400">UI Design</Link>
+                        <Link href="/#contact" className="block p-2 text-white hover:underline hover:text-green-400">Contact</Link>
                     </nav>
                     
                     

@@ -19,10 +19,8 @@ const Header = () => {
             <div className="container w-full mx-auto">
                 <div className="relative flex items-center justify-between w-full lg:justify-center">
                     <div className="w-40">
-                        <Link href="/">
-                            <a className="block font-bold text-white uppercase whitespace-nowrap">
-                                <span className="text-green-400 ">&lt;</span>Avivas Dev<span className="text-indigo-400 ">&gt;</span>
-                            </a>
+                        <Link href="/" className="block font-bold text-white uppercase whitespace-nowrap">
+                            <span className="text-green-400 ">&lt;</span>Avivas Dev<span className="text-indigo-400 ">&gt;</span>
                         </Link>
                     </div>
                     <Menu >
@@ -61,10 +59,8 @@ const Header = () => {
 
 function NavItem({href, children}) {
 
-    return (<Link href={href}>
-                <a className="block px-6 py-6 font-semibold text-gray-400 hover:text-white">
-                    {children}
-                </a>
+    return (<Link href={href} className="block px-6 py-6 font-semibold text-gray-400 hover:text-white">
+                {children}
             </Link>)
 }
  

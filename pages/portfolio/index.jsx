@@ -9,8 +9,8 @@ const Portfolio = () => {
                 <div className="relative z-10">
                     <h1 className="text-4xl font-bold text-white ">Portfolio</h1>
                     <div className="p-4 text-sm">
-                        <Link href="/">
-                            <a className="mr-4 font-semibold text-gray-400 hover:text-gray-300">Home</a>
+                        <Link href="/" className="mr-4 font-semibold text-gray-400 hover:text-gray-300">
+                            Home
                         </Link>
                         <span className="font-semibold text-gray-500">Portfolio</span>
                     </div>
@@ -19,16 +19,12 @@ const Portfolio = () => {
             </div>
             <div className="container grid-cols-10 px-4 py-10 mx-auto text-gray-400 md:py-20 md:px-10 md:grid">
 
-                <Link href="/portfolio/web">
-                    <a  className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
-                        <span className="text-gray-400">Web</span>Design   
-                    </a>
+                <Link href="/portfolio/web" className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
+                    <span className="text-gray-400">Web</span>Design
                 </Link>
 
-                <Link href="/portfolio/ui" >
-                    <a  className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
-                        <span className="text-gray-400">UI</span>Design   
-                    </a>
+                <Link href="/portfolio/ui" className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900">
+                    <span className="text-gray-400">UI</span>Design
                 </Link>
 
             </div>

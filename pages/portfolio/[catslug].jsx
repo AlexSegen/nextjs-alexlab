@@ -38,12 +38,12 @@ const FilteredPortfolio = () => {
                 <div className="relative z-10">
                     <h1 className="text-4xl font-bold text-white ">Portfolio</h1>
                     <div className="flex items-center justify-center p-4 text-sm">
-                        <Link href="/">
-                            <a className="font-semibold text-gray-400 hover:text-gray-300">Home</a>
+                        <Link href="/" className="font-semibold text-gray-400 hover:text-gray-300">
+                            Home
                         </Link>
                         <span className="mx-2 text-gray-500">/</span>
-                        <Link href="/portfolio">
-                            <a className="font-semibold text-gray-400 hover:text-gray-300">Portfolio</a>
+                        <Link href="/portfolio" className="font-semibold text-gray-400 hover:text-gray-300">
+                            Portfolio
                         </Link>
                         <span className="mx-2 text-gray-500">/</span>
                         <span className="font-semibold text-gray-500"><span className="uppercase">{ catslug } </span>Design</span>

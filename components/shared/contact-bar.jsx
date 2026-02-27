@@ -14,8 +14,8 @@ const ContactBar = props => {
                     }
                 </div>
                 <div className="z-20 text-center md:w-1/2">
-                    <Link href="#contact">
-                        <a className="px-12 py-3 text-xl md:text-3xl button is-primary whitespace-nowrap">{ btnText }</a>
+                    <Link href="#contact" className="px-12 py-3 text-xl md:text-3xl button is-primary whitespace-nowrap">
+                        { btnText }
                     </Link>
                 </div>
             </div>

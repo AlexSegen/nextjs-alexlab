@@ -59,11 +59,11 @@ export function Slide({ project }) {
                     <img className="block mx-auto my-8" src={project.media.img} alt={project.title}/>
 
                     <div>
-                        <Link href={`/portfolio/details/${project.id}`}>
-                            <a className="block mb-4 mr-2 text-lg is-primary button">Project details</a>
+                        <Link href={`/portfolio/details/${project.id}`} className="block mb-4 mr-2 text-lg is-primary button">
+                            Project details
                         </Link>
-                        <Link href="/portfolio">
-                            <a className="block text-lg font-normal underline bg-transparent button">More projects</a>
+                        <Link href="/portfolio" className="block text-lg font-normal underline bg-transparent button">
+                            More projects
                         </Link>
                     </div>
                 </div>
