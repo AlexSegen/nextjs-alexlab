@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Alejandro Vivas — Frontend Developer Portfolio
+
+Personal portfolio showcasing professional experience, selected projects, and a contact form. Built for recruiters and companies evaluating frontend development skills.
+
+![Node.js](https://img.shields.io/badge/Node.js-20-339933?style=flat&logo=node.js&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=black)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+
+## Stack
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js 15 (Pages Router) |
+| UI | React 18 |
+| Styles | Tailwind CSS v3, SCSS Modules, simple-line-icons |
+| Components | Headless UI |
+| Validation | @hapi/joi |
+| Animations | react-wow, react-on-screen |
+| Carousel | react-slick |
+
+## Features
+
+- **Context API store** — `ConfigContext` serves as the global data layer for site metadata and project data
+- **Responsive design** — mobile-first breakpoints via Tailwind CSS
+- **Video background hero** — WebM/MP4 with fallback support
+- **Contact form** — schema validation with `@hapi/joi` and state management via `useReducer`
+- **Sticky header** — animated scroll transition
+- **Project carousel** — `react-slick` with autoplay
+- **Client-side portfolio filtering** — dynamic routes (`/portfolio/:catslug`) with category filtering
+- **React Strict Mode** enabled
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
+# Requirements: Node.js >= 20 (see .nvmrc)
+
+# Install dependencies
+yarn
+
+# Development server → http://localhost:3000
 yarn dev
+
+# Production build
+yarn build
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+├── components/       # UI components (Layout, home, contact, project)
+│   ├── home/         # Hero, About, Latest Works sections
+│   ├── contact/      # ContactForm with validation
+│   ├── project/      # ProjectDetails with image carousel
+│   └── shared/       # Header, Footer, ContactBar, SocialList
+├── contexts/         # ConfigContext (global store) and data.jsx (project data)
+├── pages/            # Next.js pages (index, career, portfolio)
+├── services/         # API calls (contact form, GitHub)
+├── styles/           # globals.css, animations.css, SCSS modules
+└── utils/            # Validation schemas
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Pages
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Route | Description |
+|---|---|
+| `/` | Home — Hero, About, and Latest Works sections |
+| `/career` | Career timeline and professional experience |
+| `/portfolio` | Full project portfolio grid |
+| `/portfolio/:catslug` | Filtered portfolio by category (`web` or `ui`) |
