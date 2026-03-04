@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { projects } from "./data";
+import { projects, HARD_SKILLS, SOFT_SKILLS, TOOLS, EXPERIENCE } from "./data";
 
 
 export const ConfigContext = createContext();
@@ -20,7 +20,13 @@ const ConfigContextProvider = ({children}) => {
     return ( 
         <ConfigContext.Provider value={{
             ...config,
-            projects
+            projects,
+            career: {
+                hardSkills: HARD_SKILLS,
+                softSkills: SOFT_SKILLS,
+                tools: TOOLS,
+                experience: EXPERIENCE,
+            }
         }} >
             { children }
         </ConfigContext.Provider>
