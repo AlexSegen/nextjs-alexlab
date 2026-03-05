@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "career": "Carrera",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "sections": "Secciones",
+    "social": "Redes Sociales",
+    "reach": "Puedes encontrarme en",
+    "message_heading": "Envíame un mensaje",
+    "message_sub": "Déjame un mensaje, te contactaré lo antes posible.",
+    "copyright": "Sin derechos de autor"
+  }
+}

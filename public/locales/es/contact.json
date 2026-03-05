@@ -1,0 +1,11 @@
+{
+  "name_placeholder": "Nombre completo",
+  "email_placeholder": "Correo electrónico",
+  "message_placeholder": "Tu mensaje",
+  "send_btn": "Enviar mensaje",
+  "sending_btn": "Enviando...",
+  "success_short": "¡Muy bien!",
+  "success_message": "Tu mensaje fue enviado. Me pondré en contacto contigo lo antes posible. ¡Gracias!",
+  "error_short": "Error:",
+  "error_message": "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo."
+}

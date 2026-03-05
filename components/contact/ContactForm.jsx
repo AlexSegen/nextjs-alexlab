@@ -1,4 +1,5 @@
 import { useState, useReducer } from 'react';
+import { useTranslation } from 'react-i18next'
 import { validateMessage } from '../../utils/validations';
 import { sendMessage } from '../../services/api';
 
@@ -20,6 +21,7 @@ const initialPayload = {
 
 const ContactForm = () => {
 
+    const { t } = useTranslation('contact');
     const [loading, setLoading] = useState(false);
     const [payload, setPayload] = useState(initialPayload);
     const [result, dispatch] = useReducer(resultReducer, initialResult);
@@ -38,17 +40,29 @@ const ContactForm = () => {
 
         sendMessage(payload).then(() => {
             setLoading(false);
-            
+
             dispatch({
-                type: "SUCCESS"
+                type: "SUCCESS",
+                data: {
+                    show: true,
+                    message: t('success_message'),
+                    short: t('success_short'),
+                    type: "text-green-400"
+                }
             });
-            
+
             setPayload(initialPayload);
 
         }).catch(() => {
             setLoading(false);
             dispatch({
-                type: "ERROR"
+                type: "ERROR",
+                data: {
+                    show: true,
+                    message: t('error_message'),
+                    short: t('error_short'),
+                    type: "text-red-400"
+                }
             });
         });
     }
@@ -88,7 +102,7 @@ const ContactForm = () => {
                             <div className="px-4">
                                 <span className="text-green-500"><i className=" icons icon-user"></i></span>
                             </div>
-                            <input type="text" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Full name"
+                            <input type="text" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder={t('name_placeholder')}
                                 name="name"
                                 disabled={loading}
                                 value={payload.name}
@@ -99,7 +113,7 @@ const ContactForm = () => {
                             <div className="px-4">
                                 <span className="text-green-500"><i className=" icons icon-envelope"></i></span>
                             </div>
-                            <input type="email" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Email address"
+                            <input type="email" className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder={t('email_placeholder')}
                                 name="email"
                                 disabled={loading}
                                 value={payload.email}
@@ -109,7 +123,7 @@ const ContactForm = () => {
 
 
                     <div className="mb-4">
-                        <textarea className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder="Your message" cols="30" rows="3"
+                        <textarea className="w-full text-gray-200 bg-gray-800 border-gray-800" placeholder={t('message_placeholder')} cols="30" rows="3"
                             name="content"
                             disabled={loading}
                             value={payload.content}
@@ -120,7 +134,7 @@ const ContactForm = () => {
                         }
                     <div className="text-right">
                         <button type="submit" className="button is-primary" disabled={loading}>
-                            {loading ? 'Sending...' : 'Send message' }
+                            {loading ? t('sending_btn') : t('send_btn')}
                         </button>
 
                     </div>

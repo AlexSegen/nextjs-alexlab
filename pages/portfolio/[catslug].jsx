@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next'
 
 import { ConfigContext } from '../../contexts/ConfigContext';
 
@@ -13,6 +14,7 @@ const FilteredPortfolio = () => {
     const { catslug } = router.query
 
     const { projects } = useContext(ConfigContext);
+    const { t } = useTranslation(['portfolio', 'common']);
 
     const [filtered, setFiltered] = useState([]);
 
@@ -36,23 +38,23 @@ const FilteredPortfolio = () => {
         <Layout wided={true}>
             <div className="relative p-5 overflow-hidden text-center bg-black">
                 <div className="relative z-10">
-                    <h1 className="text-4xl font-bold text-white ">Portfolio</h1>
+                    <h1 className="text-4xl font-bold text-white ">{t('page_title')}</h1>
                     <div className="flex items-center justify-center p-4 text-sm">
                         <Link href="/" className="font-semibold text-gray-400 hover:text-gray-300">
-                            Home
+                            {t('nav.home', { ns: 'common' })}
                         </Link>
                         <span className="mx-2 text-gray-500">/</span>
                         <Link href="/portfolio" className="font-semibold text-gray-400 hover:text-gray-300">
-                            Portfolio
+                            {t('breadcrumb')}
                         </Link>
                         <span className="mx-2 text-gray-500">/</span>
-                        <span className="font-semibold text-gray-500"><span className="uppercase">{ catslug } </span>Design</span>
+                        <span className="font-semibold text-gray-500"><span className="uppercase">{ catslug } </span>{t('design')}</span>
                     </div>
                 </div>
                 <img src="/img/coding_workspace.jpg" className="absolute top-0 w-full transform -translate-y-1/2 opacity-20" alt=""/>
             </div>
             <div className="container py-5 mx-auto text-gray-400 md:py-20">
-                <h2 className="mb-2 text-4xl font-bold text-center text-white md:mb-6 md:text-left md:text-5xl"><span className="text-gray-400 uppercase">{catslug}</span>Design</h2>
+                <h2 className="mb-2 text-4xl font-bold text-center text-white md:mb-6 md:text-left md:text-5xl"><span className="text-gray-400 uppercase">{catslug}</span>{t('design')}</h2>
 
                 {
                     filtered.map(project => (

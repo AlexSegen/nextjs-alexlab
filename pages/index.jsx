@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import Layout from '../components/Layout';
 import Hero from '../components/home/hero';
 import About from '../components/home/about';
@@ -7,16 +8,18 @@ import LatestWorks from '../components/home/latest-works';
 
 const Home = () => {
 
-    return ( 
+    const { t } = useTranslation('home');
+
+    return (
         <Layout wided={true}>
             <Hero/>
             <About/>
             <LatestWorks/>
-            <ContactBar 
+            <ContactBar
             isDark={true}
-            btnText="Let's talk" 
-            contentText="Do you have a new project idea?" 
-            contentSubText="I could help you make it true."/>
+            btnText={t('contact_bar.btn')}
+            contentText={t('contact_bar.heading')}
+            contentSubText={t('contact_bar.sub')}/>
         </Layout>
      );
 }

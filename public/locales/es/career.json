@@ -1,0 +1,74 @@
+{
+  "page_title": "Carrera Profesional",
+  "breadcrumb": "Carrera",
+  "education": {
+    "title": "Educación",
+    "degree": "Técnico Universitario en Informática",
+    "institute_label": "Instituto:",
+    "year_label": "Año:"
+  },
+  "location": {
+    "title": "Ubicación",
+    "country_label": "País:",
+    "city_label": "Ciudad:"
+  },
+  "languages": {
+    "title": "Idiomas",
+    "spanish_label": "Español:",
+    "spanish_level": "Nativo",
+    "english_label": "Inglés:",
+    "english_level": "Profesional"
+  },
+  "contact": {
+    "title": "Contacto",
+    "phone_label": "Teléfono:",
+    "phone_value": "Contáctame",
+    "linkedin_label": "Linkedin:"
+  },
+  "hard_skills_title": "Habilidades Técnicas",
+  "soft_skills": {
+    "title": "Habilidades Blandas",
+    "items": ["Resolución de Problemas", "Pensamiento Crítico", "Trabajo en Equipo", "Curiosidad", "Comunicativo"]
+  },
+  "tools_title": "Herramientas que uso",
+  "experience": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "company": "MercadoLibre Chile",
+        "period": "2023 - Presente",
+        "className": "bg-gray-800",
+        "rol": "Sr Software Engineer",
+        "description": "Usando metodologías ágiles, responsable de mantener y construir nuevas soluciones para ecommerces de vehículos en diferentes países de la red Carsales Co. Desarrollo de soluciones frontend y backend usando Reactjs, Angular, VueJS, NetCore C#, CI/CD, AWS, NodeJS y programación funcional."
+      },
+      {
+        "company": "Chileautos SpA (Carsales Network)",
+        "period": "2018 - 2023",
+        "className": "bg-gray-800",
+        "rol": "Software Engineer",
+        "description": "Usando metodologías ágiles, responsable de mantener y construir nuevas soluciones para ecommerces de vehículos en diferentes países de la red Carsales Co. Desarrollo de soluciones frontend y backend usando Reactjs, Angular, VueJS, NetCore C#, CI/CD, AWS, NodeJS y programación funcional."
+      },
+      {
+        "company": "Freelance",
+        "period": "2012 - Presente",
+        "className": "bg-gray-900",
+        "rol": "Frontend Developer / Diseñador Web / Desarrollador Web",
+        "description": "Construyo sitios web para pequeñas y grandes empresas para ayudarlas a tener presencia en Internet usando diferentes tecnologías web. También responsable de crear nuevos diseños UI para mejorar la presentación visual de webs/apps existentes."
+      },
+      {
+        "company": "Dotworkers Venezuela C.A.",
+        "period": "2012 - 2018",
+        "className": "bg-gray-800",
+        "rol": "Diseñador Gráfico / UI Designer / Jefe de Departamento Creativo",
+        "description": "Responsable de diseñar interfaces y plantillas para White Labels (Sitios Web y Aplicaciones Web). Diseño y construcción de landing pages usando diferentes stacks como PHP Laravel, VueJS, JQuery y herramientas modernas (Webpack, GulpJS, NPM)."
+      },
+      {
+        "company": "LCC C.A.",
+        "period": "2008 - 2012",
+        "className": "bg-gray-900",
+        "rol": "Administrador de Redes y HelpDesk",
+        "description": "Responsable de mantener la red informática de la empresa funcionando sin interrupciones. Involucró más de 50 equipos, aplicaciones de software y hardware en toda la empresa."
+      }
+    ]
+  }
+}

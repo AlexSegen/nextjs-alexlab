@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -18,12 +19,13 @@ var settings = {
 const ProjectCarousel = () => {
 
     const { projects } = useContext(ConfigContext);
+    const { t } = useTranslation('home');
 
     return (
         <section className="flex items-center justify-center w-full min-h-screen py-8 text-white bg-black">
             <div className="container mx-auto">
                 <div className="px-4">
-                    <h2 className="mb-5 text-3xl font-bold text-center md:text-5xl">Recent Projects</h2>
+                    <h2 className="mb-5 text-3xl font-bold text-center md:text-5xl">{t('latest_works.heading')}</h2>
 
                     <div className="px-4 md:px-0">
                         <Slider {...settings}>
@@ -45,6 +47,7 @@ const ProjectCarousel = () => {
 export default ProjectCarousel;
 
 export function Slide({ project }) {
+    const { t } = useTranslation('home');
     return (
         <div className="grid grid-cols-12">
             <div className="col-span-12 p-4 md:col-span-4">
@@ -60,10 +63,10 @@ export function Slide({ project }) {
 
                     <div>
                         <Link href={`/portfolio/details/${project.id}`} className="block mb-4 mr-2 text-lg is-primary button">
-                            Project details
+                            {t('latest_works.project_details')}
                         </Link>
                         <Link href="/portfolio" className="block text-lg font-normal underline bg-transparent button">
-                            More projects
+                            {t('latest_works.more_projects')}
                         </Link>
                     </div>
                 </div>
