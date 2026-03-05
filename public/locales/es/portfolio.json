@@ -1,0 +1,28 @@
+{
+  "page_title": "Portafolio",
+  "breadcrumb": "Portafolio",
+  "design": "Diseño",
+  "project": {
+    "preview": "Vista previa",
+    "details": "Detalles",
+    "tech_tools": "Tecnologías",
+    "features": "Características"
+  },
+  "projects": {
+    "1": {
+      "category": "Diseño UI",
+      "description": "Neo es un juego online que pertenece a un popular sitio de casino en LatAm. Fui responsable de rediseñar la UI usando Adobe XD y mejorar la usabilidad y experiencia de usuario para jugadores nuevos y existentes.",
+      "features": ["UX Mejorada", "Presentación Móvil", "Flujo de incorporación simple", "UI Moderna"]
+    },
+    "2": {
+      "category": "Diseño UI",
+      "description": "DVT Streaming es una plataforma para ver partidos de fútbol en vivo y grabados online. Fui responsable de rediseñar la UI usando Adobe XD y mejorar la usabilidad y experiencia de usuario.",
+      "features": ["UX Mejorada", "Presentación Móvil", "Flujo de incorporación simple", "UI Moderna"]
+    },
+    "3": {
+      "category": "Diseño Web",
+      "description": "Combate Gamer es un lugar donde suceden los eSports. Este sitio web fue creado usando el framework VueJS. Implementando las mejores prácticas de desarrollo con componentes web.",
+      "features": ["UX Mejorada", "Diseño Responsive", "Flujo de incorporación simple", "UI Moderna"]
+    }
+  }
+}

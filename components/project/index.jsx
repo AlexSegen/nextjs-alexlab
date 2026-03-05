@@ -1,4 +1,5 @@
 import Link  from 'next/link';
+import { useTranslation } from 'react-i18next'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -17,25 +18,30 @@ const CheckIcon  = () => <svg className="inline w-6 h-6 mr-2 text-green-400" fil
 
 const ProjectDetails = ({ project }) => {
 
+    const { t } = useTranslation('portfolio');
+    const description = t(`projects.${project.id}.description`, { defaultValue: project.description });
+    const category = t(`projects.${project.id}.category`, { defaultValue: project.category });
+    const features = t(`projects.${project.id}.features`, { returnObjects: true, defaultValue: project.features });
+
     return (
         <div className="block grid-cols-12 md:grid">
             <div className="col-span-4 p-4">
                 <div className="p-2 md:p-10">
                     <h4 className="mt-2 mb-1 text-2xl font-bold md:mt-10 md:text-4xl">{project.title}</h4>
-                    <p className="mb-5 text-lg font-semibold text-gray-500 md:text-xl md:mb-10">{project.category}</p>
+                    <p className="mb-5 text-lg font-semibold text-gray-500 md:text-xl md:mb-10">{category}</p>
 
                     <p className="mb-10 text-gray-400">
-                        {project.description}
+                        {description}
                     </p>
 
                     <div className="mb-10">
 
                         {
-                            project.url  && (<a target="_blank"  href={project.url} className="mb-4 mr-2 text-lg is-primary button">Preview</a>)
+                            project.url  && (<a target="_blank"  href={project.url} className="mb-4 mr-2 text-lg is-primary button">{t('project.preview')}</a>)
                         }
 
                         <Link href={`/portfolio/details/${project.id}`} className="text-lg font-normal button">
-                            Details
+                            {t('project.details')}
                         </Link>
                     </div>
 
@@ -44,7 +50,7 @@ const ProjectDetails = ({ project }) => {
                         {
                             project.tech && (
                                 <>
-                                    <h3 className="mb-4 font-semibold text-white">Tech & Tools</h3>
+                                    <h3 className="mb-4 font-semibold text-white">{t('project.tech_tools')}</h3>
                                     <ul className="mb-4 text-gray-400">
 
                                         {
@@ -60,11 +66,11 @@ const ProjectDetails = ({ project }) => {
                         {
                             project.features && (
                                 <>
-                                    <h3 className="mb-4 font-semibold text-white">Features</h3>
+                                    <h3 className="mb-4 font-semibold text-white">{t('project.features')}</h3>
                                     <ul className="mb-4 text-gray-400">
 
                                         {
-                                            project.features.map(f => (
+                                            features.map(f => (
                                                 <li key={f}><CheckIcon/> {f}</li>
                                             ))
                                         }

@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import { useState, useEffect } from "react"
-import { Menu, MenuButton, MenuItems } from '@headlessui/react';
+import { Menu, MenuButton, MenuItems } from '@headlessui/react'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from './language-switcher'
 
 const Header = () => {
 
     const [scrollPosition, setScrollPosition] = useState(0);
+    const { t } = useTranslation('common');
 
     useEffect(() =>{
         document.addEventListener('scroll', function(e) {
@@ -30,19 +33,21 @@ const Header = () => {
 
                         <MenuItems className="absolute z-40 w-full bg-gray-800 rounded md:hidden -bottom-80 focus:outline-none">
                             <nav className="justify-end block w-full md:flex">
-                                <NavItem href="/">Home</NavItem>
-                                <NavItem href="/career">Career</NavItem>
-                                <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
-                                <NavItem href="/#contact">Contact</NavItem>
+                                <NavItem href="/">{t('nav.home')}</NavItem>
+                                <NavItem href="/career">{t('nav.career')}</NavItem>
+                                <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> {t('nav.portfolio')}</NavItem>
+                                <NavItem href="/#contact">{t('nav.contact')}</NavItem>
+                                <LanguageSwitcher />
                             </nav>
                         </MenuItems>
                     </Menu>
                     <div className="hidden w-full md:block">
                         <nav className="justify-end block w-full md:flex">
-                            <NavItem href="/">Home</NavItem>
-                            <NavItem href="/career">Career</NavItem>
-                            <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> Portfolio</NavItem>
-                            <NavItem href="/#contact">Contact</NavItem>
+                            <NavItem href="/">{t('nav.home')}</NavItem>
+                            <NavItem href="/career">{t('nav.career')}</NavItem>
+                            <NavItem href="/portfolio"><i className="hidden w-3 h-3 mr-2 bg-green-400 rounded-full opacity-75 md:inline-flex animate-ping"></i> {t('nav.portfolio')}</NavItem>
+                            <NavItem href="/#contact">{t('nav.contact')}</NavItem>
+                            <LanguageSwitcher />
                         </nav>
                     </div>
                 </div>
