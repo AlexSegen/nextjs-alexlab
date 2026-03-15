@@ -29,6 +29,7 @@ El sitio estaba desplegado en Amplify, cuya distribución interna de CloudFront 
 | S3 Bucket | `avivas.dev` — región `us-east-1`, acceso privado |
 | CloudFront OAC | `<CF_OAC_ID>` — tipo S3, signing `sigv4` |
 | CloudFront Distribution | `<CF_DISTRIBUTION_ID>` → `<CF_DOMAIN>.cloudfront.net` |
+| CloudFront Function | `avivas-dev-uri-rewrite` — viewer-request, runtime `cloudfront-js-2.0` |
 | ACM Certificate | `arn:aws:acm:us-east-1:<AWS_ACCOUNT_ID>:certificate/<CERT_ID>` |
 | Route53 Hosted Zone | `<HOSTED_ZONE_ID>` (avivas.dev) |
 | AWS Account ID | `<AWS_ACCOUNT_ID>` |
@@ -147,6 +148,7 @@ Configuración final de la distribución:
 |---|---|
 | Origin | `avivas.dev.s3.us-east-1.amazonaws.com` |
 | Origin Access | OAC `<CF_OAC_ID>` |
+| CloudFront Function | `avivas-dev-uri-rewrite` (viewer-request) |
 | Aliases | `avivas.dev`, `www.avivas.dev` |
 | Default root object | `index.html` |
 | Viewer protocol policy | `redirect-to-https` |
@@ -203,6 +205,39 @@ yarn deploy
 ```
 
 El primer deploy subió **80 archivos / 27.3 MiB**.
+
+---
+
+## SPA routing — fix para refresh en rutas internas
+
+Al hacer refresh en `/career`, `/portfolio`, etc., S3 no encuentra el objeto `career` (sin extensión)
+y retorna 403, que CloudFront convierte en 404. La solución es una **CloudFront Function** que
+reescribe las URIs antes de que lleguen al origen S3.
+
+### Función `avivas-dev-uri-rewrite`
+
+```js
+function handler(event) {
+  var request = event.request;
+  var uri = request.uri;
+
+  // Directory request → serve index.html
+  if (uri.endsWith('/')) {
+    request.uri += 'index.html';
+  }
+  // No file extension → append .html (Next.js static export)
+  else if (!uri.split('/').pop().includes('.')) {
+    request.uri += '.html';
+  }
+
+  return request;
+}
+```
+
+- **Evento:** `viewer-request` (se ejecuta antes de consultar la caché y el origen)
+- **Runtime:** `cloudfront-js-2.0`
+- Rutas con extensión (`.js`, `.css`, `.jpg`, etc.) pasan sin modificación
+- Una ruta inexistente sigue retornando 404 correctamente
 
 ---
 
