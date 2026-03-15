@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "yarn build && aws s3 sync out/ s3://avivas.dev --delete && aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths '/*'"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",

@@ -6,8 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 yarn dev          # Start dev server at localhost:3000
-yarn build        # Production build
+yarn build        # Production build (generates static export in out/)
 yarn start        # Start production server
+yarn deploy       # Build + sync to S3 + invalidate CloudFront cache
 ```
 
 No linting or test scripts are configured.
@@ -61,6 +62,37 @@ Portfolio filtering works client-side: `[catslug].jsx` reads `router.query.catsl
 
 ### Next.js 15 notes
 
-- `next.config.js` exists with `reactStrictMode: true`.
+- `next.config.js` has `reactStrictMode: true` and `output: 'export'` (static export mode).
 - `<Link>` does **not** accept an `<a>` child — pass `className` and other props directly to `<Link>`.
-- Static export (`next export`) was removed; `yarn build` is sufficient for deployment.
+- Build output goes to `out/` (not `.next/`). Do **not** add API routes — they are incompatible with `output: 'export'`.
+- Dynamic routes must export `getStaticPaths` + `getStaticProps` for static export to work.
+
+---
+
+## Infrastructure (AWS)
+
+The site is deployed to **https://avivas.dev** via S3 + CloudFront.
+
+### AWS Resources
+
+| Resource | ID / Value |
+|---|---|
+| S3 Bucket | `avivas.dev` (us-east-1, private) |
+| CloudFront Distribution | `<CF_DISTRIBUTION_ID>` → `<CF_DOMAIN>.cloudfront.net` |
+| CloudFront OAC | `<CF_OAC_ID>` |
+| ACM Certificate | `arn:aws:acm:us-east-1:<AWS_ACCOUNT_ID>:certificate/<CERT_ID>` |
+| Route53 Hosted Zone | `<HOSTED_ZONE_ID>` (avivas.dev) |
+| AWS Profile | `default` |
+
+### Deploy flow
+
+```bash
+yarn deploy
+# 1. yarn build  → generates out/ with static HTML/CSS/JS
+# 2. aws s3 sync → uploads out/ to s3://avivas.dev (deletes removed files)
+# 3. cloudfront  → invalidates /* cache so changes are live immediately
+```
+
+### Adding server-side logic
+
+API routes are not supported in static export. For server-side processing (webhooks, email, etc.), use **AWS Lambda + API Gateway** and call the endpoint directly from the frontend.

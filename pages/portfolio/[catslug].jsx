@@ -67,4 +67,18 @@ const FilteredPortfolio = () => {
      );
 }
  
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { catslug: 'web' } },
+      { params: { catslug: 'ui' } },
+    ],
+    fallback: false,
+  }
+}
+
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default FilteredPortfolio;
