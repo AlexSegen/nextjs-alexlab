@@ -1,3 +1,5 @@
+import { useTranslation, Trans } from 'react-i18next'
+
 const SkillItem = ({ name, logo, className }) => {
     return (
         <div className="w-full col-span-4 md:col-span-2">
@@ -10,20 +12,24 @@ const SkillItem = ({ name, logo, className }) => {
 }
 
 const About =  () => {
-    
+
+    const { t } = useTranslation('home');
+
     return (
         <div className={`flex items-center justify-center min-h-screen bg-black`}>
             
             <div className="container mx-auto">
 
                 <div className="p-10 text-center">
-                    <h2 className="mb-10 text-3xl font-bold text-white md:text-5xl">My favorite stacks</h2>
+                    <h2 className="mb-10 text-3xl font-bold text-white md:text-5xl">{t('about.heading')}</h2>
                     <p className="mb-4 text-gray-400">
-                        I have huge experience working with <strong className="font-semibold text-white">Angular, React, VueJS and NodeJS</strong>. And I love taking care of <strong className="font-semibold text-white">UI / UX design</strong> , look and feel, user interaction and responsive behaviour.
+                        <Trans i18nKey="about.description" ns="home">
+                            I have huge experience working with <strong className="font-semibold text-white">Angular, React, VueJS and NodeJS</strong>. And I love taking care of <strong className="font-semibold text-white">UI / UX design</strong>, look and feel, user interaction and responsive behaviour.
+                        </Trans>
                     </p>
 
                     <p className="mb-4 text-gray-400">
-                        Some of my favorite design tools are Adobe Photoshop, Illustrator, Xperience Design and others.
+                        {t('about.design_tools')}
                     </p>
                 </div>
                 <div className="grid max-w-sm grid-cols-12 gap-4 mx-auto md:max-w-4xl md:grid-cols-12 md:gap-6">
@@ -38,9 +44,9 @@ const About =  () => {
                 <div className="max-w-3xl p-4 mx-auto mt-16 text-center md:p-8">
                     <div className="p-8 border-2 border-gray-800 border-dashed rounded">
 
-                        <h3 className="mb-4 text-3xl font-bold text-white">Learning</h3>
+                        <h3 className="mb-4 text-3xl font-bold text-white">{t('about.learning')}</h3>
                         <p className="mb-4 text-gray-400">
-                            These are some frameworks / libs I like to keep studying everyday.
+                            {t('about.learning_sub')}
                         </p>
                         <div className="flex items-center justify-center max-w-md mx-auto mt-5">
                             <SkillItem logo="reduxx.png" name="Redux" />

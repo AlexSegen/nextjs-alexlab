@@ -26,12 +26,13 @@ This is a Next.js 15 personal portfolio site (Alejandro Vivas - Frontend Develop
 **`contexts/ConfigContext.jsx`** is the central data store, wrapping the entire app via `pages/_app.jsx`. It provides:
 - Site metadata (title, description, social links)
 - `projects` — imported from `contexts/data.jsx` (static project data)
+- `career` — `{ hardSkills, softSkills, tools, experience }` from `contexts/data.jsx`
 
 All pages and components access shared data via `useContext(ConfigContext)`.
 
-**`contexts/data.jsx`** — static array of portfolio projects. Each project has `id`, `title`, `category`, `catslug` (`"web"` or `"ui"`), `description`, `tech`, `features`, `photos`, and optional `url`.
+**`contexts/data.jsx`** — static arrays: `HARD_SKILLS`, `SOFT_SKILLS`, `TOOLS`, `EXPERIENCE`, and `projects`. Hard skills and tools are tech names (no translation needed). Soft skills and experience descriptions are localized via `career.json`.
 
-**`services/api.jsx`** — external API calls to `https://pixelagil.herokuapp.com/api` (leads/projects) and the GitHub API. The contact form uses `sendMessage()` from here.
+**`services/api.jsx`** — external API calls to `https://pixelagil.herokuapp.com/api` and the GitHub API. The contact form uses `sendMessage()` from here.
 
 ### Pages
 
@@ -47,7 +48,7 @@ Portfolio filtering works client-side: `[catslug].jsx` reads `router.query.catsl
 ### Component Structure
 
 - **`components/Layout.jsx`** — root layout wrapping every page. Adds `Header` and `Footer`, manages scroll position for sticky header offset, accepts `wided` prop (skips `container mx-auto` on `<main>` when true).
-- **`components/shared/`** — `header-alt.jsx`, `footer.jsx`, `contact-bar.jsx`, `social-list.jsx`
+- **`components/shared/`** — `header-alt.jsx`, `footer.jsx`, `contact-bar.jsx`, `social-list.jsx`, `language-switcher.jsx`
 - **`components/home/`** — `hero.jsx`, `about.jsx`, `latest-works.jsx`
 - **`components/contact/`** — `ContactForm.jsx` (uses `useReducer` via `ResultReducer.jsx`), validates with `@hapi/joi` via `utils/validations.jsx`
 - **`components/project/index.jsx`** — `ProjectDetails` component using `react-slick` image carousel
@@ -59,6 +60,42 @@ Portfolio filtering works client-side: `[catslug].jsx` reads `router.query.catsl
 - **`styles/animations.css`** — animation utilities
 - **CSS Modules** — used for component-specific styles (e.g., `hero.module.scss`, `social-list.module.scss`)
 - **`simple-line-icons`** — icon font used for form field icons (`icon-user`, `icon-envelope`, etc.)
+
+### Localization (i18n)
+
+The site supports **English (en)** and **Spanish (es)** via `react-i18next`.
+
+**`i18n/index.js`** — initializes i18next with all translation resources bundled directly (no HTTP backend, required to avoid SSR hydration mismatches in Next.js). Always initializes with `lng: 'en'`; the saved language is restored client-side in `pages/_app.jsx` via `useEffect` reading from `localStorage`.
+
+**Translation files** live in `public/locales/{en,es}/{namespace}.json`:
+
+| Namespace | Content |
+|---|---|
+| `common` | Nav links, footer labels |
+| `home` | Hero bio, about section, latest works, contact bar |
+| `career` | All career page text, soft skills array, full experience objects |
+| `portfolio` | Portfolio pages, project descriptions/features/categories |
+| `contact` | Form placeholders, button labels, success/error messages |
+
+**Usage pattern** — every component that renders text imports `useTranslation`:
+```jsx
+const { t } = useTranslation('home')
+// ...
+<h1>{t('hero.title')}</h1>
+```
+
+For rich text with JSX tags (e.g., `<strong>`), use the `Trans` component:
+```jsx
+<Trans i18nKey="about.description" ns="home">
+  Text with <strong className="...">highlighted</strong> parts.
+</Trans>
+```
+
+For arrays (skills, experience items): `t('soft_skills.items', { returnObjects: true })`.
+
+**Important:** Never use `i18next-http-backend` in this project — translations must be imported statically to work with Next.js SSR. When adding a new namespace, import it in `i18n/index.js` and add it to both `en` and `es` resource objects.
+
+**Language persistence** — `LanguageSwitcher` saves to `localStorage` key `'lang'`. `_app.jsx` reads this key on mount to restore the preference.
 
 ### Next.js 15 notes
 

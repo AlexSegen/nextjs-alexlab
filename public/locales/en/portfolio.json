@@ -1,0 +1,28 @@
+{
+  "page_title": "Portfolio",
+  "breadcrumb": "Portfolio",
+  "design": "Design",
+  "project": {
+    "preview": "Preview",
+    "details": "Details",
+    "tech_tools": "Tech & Tools",
+    "features": "Features"
+  },
+  "projects": {
+    "1": {
+      "category": "UI Design",
+      "description": "Neo is an online game that belongs to a very popular casino website in LatAm. I was responsible for redesigning the UI using Adobe XD and improve usability and user experience for old and new players.",
+      "features": ["Improved UX", "Mobile Presentation", "Easy boarding flow", "Modern UI"]
+    },
+    "2": {
+      "category": "UI Design",
+      "description": "DVT Streaming is a platform to watch live and recorded Soccer Matches online. I was responsible for redesigning the UI using Adobe XD and improve usability and user experience for old and new players.",
+      "features": ["Improved UX", "Mobile Presentation", "Easy boarding flow", "Modern UI"]
+    },
+    "3": {
+      "category": "Web Design",
+      "description": "Combate Gamer is a place where eSports happens. This website was created using VueJS framework as required. Implementing best development practices with web components.",
+      "features": ["Improved UX", "Responsive design", "Easy boarding flow", "Modern UI"]
+    }
+  }
+}

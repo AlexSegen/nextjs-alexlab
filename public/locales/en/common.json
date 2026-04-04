@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "career": "Career",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "footer": {
+    "sections": "Sections",
+    "social": "Social Network",
+    "reach": "You can reach me at",
+    "message_heading": "Send me a message",
+    "message_sub": "Leave me a message, I will contact you as soon as possible.",
+    "copyright": "No copyright"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Frontend Developer",
+    "bio": "I'm Alejandro, a full-stack JavaScript engineer from Santiago, Chile. With 10+ years in web development, I've designed and implemented modern solutions across the full stack for diverse clients—from early-stage startups to established companies. I'm passionate about building performant, scalable applications.",
+    "contact_btn": "Contact me!",
+    "portfolio_btn": "My Portfolio"
+  },
+  "about": {
+    "heading": "My favorite stacks",
+    "description": "I have huge experience working with <1>Angular, React, VueJS and NodeJS</1>. And I love taking care of <3>UI / UX design</3>, look and feel, user interaction and responsive behaviour.",
+    "design_tools": "Some of my favorite design tools are Adobe Photoshop, Illustrator, Xperience Design and others.",
+    "learning": "Learning",
+    "learning_sub": "These are some frameworks / libs I like to keep studying everyday."
+  },
+  "latest_works": {
+    "heading": "Recent Projects",
+    "project_details": "Project details",
+    "more_projects": "More projects"
+  },
+  "contact_bar": {
+    "heading": "Do you have a new project idea?",
+    "sub": "I could help you make it true.",
+    "btn": "Let's talk"
+  }
+}
