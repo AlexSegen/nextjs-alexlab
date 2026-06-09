@@ -88,6 +88,54 @@ El plan ofrecía un "shim" temporal de `ConfigContext` para fases intermedias. S
 
 ---
 
+---
+
+## Fase 3 — Migración a App Router ✅
+
+**Estado**: Completada
+**Build**: `yarn build` OK — 8 rutas estáticas generadas en `out/` + `404.html`. Verificado con `npx serve out` (todas las rutas devuelven 200, slugs inválidos devuelven 404).
+
+### Cambios realizados
+
+#### Layout raíz
+- Creado [app/globals.css](app/globals.css) — fusión de `styles/globals.css` + `styles/animations.css` (clases `.button`/`.button.is-primary`, animaciones `fade-in-bottom`/`fade-in-top`).
+- Creado [hooks/use-scroll-position.ts](hooks/use-scroll-position.ts) — hook único con `addEventListener`/`removeEventListener` y `{ passive: true }` (corrige el leak de listeners duplicados de `Layout.jsx` + `header-alt.jsx`).
+- Creado [components/layout/site-shell.tsx](components/layout/site-shell.tsx) (`"use client"`) — encapsula el padding `pt-20` condicional según scroll, usando el hook anterior.
+- Creado [app/layout.tsx](app/layout.tsx) (Server Component) — `<html>`, imports de CSS globales, `metadata` (título con template, descripción) desde `data/site.ts`, JSON-LD `Person` (nombre, rol, `sameAs` con redes sociales).
+- `app/layout.tsx` renderiza `<SiteShell><Header/>{children}<Footer/></SiteShell>`.
+- Eliminados `pages/_app.jsx` y `components/Layout.jsx`.
+- **Simplificación**: el prop `wided` de `Layout` y la rama `container mx-auto` de `<main>` eran código muerto (las 4 páginas siempre pasaban `wided={true}`) — no se migró, `<main>` ahora es simple.
+
+#### Páginas
+- [app/page.tsx](app/page.tsx) ← `pages/index.jsx` (Hero, About, LatestWorks, ContactBar).
+- [app/career/page.tsx](app/career/page.tsx) ← `pages/career.jsx`, con `Skill`/`ExperienceItem` inline tipados, `export const metadata` (título "Career").
+- [app/portfolio/page.tsx](app/portfolio/page.tsx) ← `pages/portfolio/index.jsx`, con metadata.
+- [app/portfolio/[catslug]/page.tsx](app/portfolio/[catslug]/page.tsx) ← `pages/portfolio/[catslug].jsx`: filtrado ahora en build-time con `generateStaticParams` (`web`/`ui`) + filtrado directo de `data/projects`; slugs inválidos usan `notFound()`.
+- **Nuevo** [app/portfolio/[catslug]/[id]/page.tsx](app/portfolio/[catslug]/[id]/page.tsx) — página de detalle de proyecto individual con `generateStaticParams` sobre todas las combinaciones `{catslug, id}`, `generateMetadata` con título/descripción del proyecto, breadcrumbs. **Resuelve los enlaces rotos** `/portfolio/details/${id}` → ahora `/portfolio/${catslug}/${id}` (corregido en `latest-works.jsx` y `components/project/index.jsx`).
+- Creado [app/not-found.tsx](app/not-found.tsx) — 404 amigable.
+- Eliminado todo `pages/`.
+
+#### Componentes ajustados para App Router (sin renombrar/mover aún — eso es Fase 4)
+- [components/shared/header-alt.jsx](components/shared/header-alt.jsx): agregado `"use client"`, reemplazado el listener de scroll local por `useScrollPosition()`.
+- [components/contact/ContactForm.jsx](components/contact/ContactForm.jsx): agregado `"use client"` (usa `useState`/`useReducer`).
+- [components/home/latest-works.jsx](components/home/latest-works.jsx) y [components/project/index.jsx](components/project/index.jsx): agregado `"use client"` (usan `react-slick`).
+
+#### next.config y tipos
+- `next.config.js` → [next.config.ts](next.config.ts), mantiene `output: 'export'` y `reactStrictMode: true`.
+- [tailwind.config.js](tailwind.config.js): `content` ahora incluye `./app/**/*.{js,ts,jsx,tsx}`.
+- Creado [types/css.d.ts](types/css.d.ts) — declaración `*.css` para imports de CSS de paquetes de terceros (`simple-line-icons`) en `app/layout.tsx`.
+
+#### Eliminado
+- `pages/`, `styles/`, `components/Layout.jsx`, `next.config.js`.
+
+### Notas para próximas fases
+- `params` en App Router (Next 15) es `Promise<{...}>` — todas las páginas dinámicas usan `async`/`await params`.
+- Componentes pendientes de mover/renombrar/tipar (Fase 4): `header-alt.jsx`→`components/layout/header.tsx`, `footer.jsx`→`components/layout/footer.tsx`, `hero.jsx`, `about.jsx`, `social-list.jsx`, `ContactForm.jsx`+`ResultReducer.jsx`, `latest-works.jsx` (dividir en server+client), `project/index.jsx`→`components/portfolio/project-details.tsx`.
+- Detectado código muerto adicional no listado en Fase 0: `components/shared/social-list.module.scss` no se importa desde ningún lado — eliminar en Fase 4 al convertir `social-list.jsx`.
+- Warnings `<img>` siguen pendientes para Fase 5.
+
+---
+
 ## Próxima fase
 
-Fase 3 — Migración a App Router (en progreso, ejecución autónoma).
+Fase 4 — Modernización de componentes (en progreso, ejecución autónoma).

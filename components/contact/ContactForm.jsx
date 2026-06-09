@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useReducer } from 'react';
 import { validateMessage } from '../../lib/validations';
 import { sendMessage } from '../../lib/contact-api';

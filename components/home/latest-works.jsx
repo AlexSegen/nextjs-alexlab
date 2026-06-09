@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 import Slider from "react-slick";
@@ -56,7 +58,7 @@ export function Slide({ project }) {
                     <img className="block mx-auto my-8" src={project.media.img} alt={project.title}/>
 
                     <div>
-                        <Link href={`/portfolio/details/${project.id}`} className="block mb-4 mr-2 text-lg is-primary button">
+                        <Link href={`/portfolio/${project.catslug}/${project.id}`} className="block mb-4 mr-2 text-lg is-primary button">
                             Project details
                         </Link>
                         <Link href="/portfolio" className="block text-lg font-normal underline bg-transparent button">

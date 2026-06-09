@@ -1,18 +1,12 @@
+'use client'
+
 import Link from 'next/link'
-import { useState, useEffect } from "react"
 import { Menu, MenuButton, MenuItems } from '@headlessui/react';
+import { useScrollPosition } from '../../hooks/use-scroll-position';
 
 const Header = () => {
 
-    const [scrollPosition, setScrollPosition] = useState(0);
-
-    useEffect(() =>{
-        document.addEventListener('scroll', function(e) {
-            setScrollPosition(window.scrollY)
-        });
-
-    }, []);
-
+    const scrollPosition = useScrollPosition();
 
     return (
         <header className={` w-full p-4 lg:p-0 z-40  ${scrollPosition > 400 ? 'bg-gray-900 fixed top-0 fade-in-top':'bg-black relative'}`}>

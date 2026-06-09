@@ -1,3 +1,5 @@
+'use client'
+
 import Link  from 'next/link';
 
 import Slider from "react-slick";
@@ -34,7 +36,7 @@ const ProjectDetails = ({ project }) => {
                             project.url  && (<a target="_blank"  href={project.url} className="mb-4 mr-2 text-lg is-primary button">Preview</a>)
                         }
 
-                        <Link href={`/portfolio/details/${project.id}`} className="text-lg font-normal button">
+                        <Link href={`/portfolio/${project.catslug}/${project.id}`} className="text-lg font-normal button">
                             Details
                         </Link>
                     </div>
