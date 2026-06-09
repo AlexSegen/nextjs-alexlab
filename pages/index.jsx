@@ -1,7 +1,6 @@
 import Layout from '../components/Layout';
 import Hero from '../components/home/hero';
 import About from '../components/home/about';
-// import Features from '../components/home/features';
 import ContactBar from '../components/shared/contact-bar';
 import LatestWorks from '../components/home/latest-works';
 
