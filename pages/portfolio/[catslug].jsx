@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps --
+   Filtrado client-side legacy; se reemplaza por generateStaticParams en la
+   migración a App Router (Fase 3), que elimina este patrón por completo. */
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useState, useEffect, useContext } from 'react';

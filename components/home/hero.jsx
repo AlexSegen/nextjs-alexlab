@@ -22,8 +22,8 @@ const Hero = () => {
                         <h4 className="mb-1 text-2xl font-bold text-green-500 md:text-4xl">Alejandro Vivas</h4>
                         <h1 className="mb-8 text-4xl font-bold text-white md:text-5xl md:mb-14" id="target">Frontend <span className="border-b-2 border-green-500">Developer</span></h1>
                         <p className="mb-4 font-normal text-gray-300">
-                            I'm Alejandro, a full-stack JavaScript engineer from Santiago, Chile. With 10+ years in web development,
-                            I've designed and implemented modern solutions across the full stack for diverse clients—from early-stage startups to established companies. I'm passionate about building performant, scalable applications.
+                            I&apos;m Alejandro, a full-stack JavaScript engineer from Santiago, Chile. With 10+ years in web development,
+                            I&apos;ve designed and implemented modern solutions across the full stack for diverse clients—from early-stage startups to established companies. I&apos;m passionate about building performant, scalable applications.
                         </p>
 
                         <div className="mt-8 mb:mt-4">
