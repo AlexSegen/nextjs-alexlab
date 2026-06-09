@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./shared/header-alt";
 import Footer from "./shared/footer";
-import { ConfigContext } from "../contexts/ConfigContext";
+import { siteConfig } from "../data/site";
 
 const Layout = ({ location, title, description, wided, children }) => {
-  const context = useContext(ConfigContext);
-
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() =>{
@@ -21,7 +19,7 @@ const Layout = ({ location, title, description, wided, children }) => {
     <div className={`min-h-screen bg-black ${scrollPosition > 400 ? 'pt-20':''}`}>
       <Head>
         <title>
-          {title ? `${title} | Alejandro Vivas - Frontend Developer` : context.title}
+          {title ? `${title} | Alejandro Vivas - Frontend Developer` : siteConfig.title}
         </title>
         <meta
           name="description"

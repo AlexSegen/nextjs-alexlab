@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { useContext } from 'react'
 
 import Layout from "../components/Layout";
-import { ConfigContext } from '../contexts/ConfigContext';
+import { siteConfig } from '../data/site';
+import { HARD_SKILLS, SOFT_SKILLS, TOOLS, EXPERIENCE } from '../data/career';
 
 
 const Skill = ({ caption }) => (
@@ -24,8 +24,11 @@ const ExperienceItem = ({ className, period, company, description, rol }) => (
 
 const Career = () => {
 
-    const { linkedin, career } = useContext(ConfigContext);
-    const { hardSkills, softSkills, tools, experience } = career;
+    const { linkedin } = siteConfig;
+    const hardSkills = HARD_SKILLS;
+    const softSkills = SOFT_SKILLS;
+    const tools = TOOLS;
+    const experience = EXPERIENCE;
 
     return (
         <Layout wided={true}>

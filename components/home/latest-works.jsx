@@ -1,10 +1,9 @@
-import { useContext } from 'react';
 import Link from 'next/link'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ConfigContext } from '../../contexts/ConfigContext';
+import { projects } from '../../data/projects';
 
 var settings = {
     dots: false,
@@ -16,8 +15,6 @@ var settings = {
 };
 
 const ProjectCarousel = () => {
-
-    const { projects } = useContext(ConfigContext);
 
     return (
         <section className="flex items-center justify-center w-full min-h-screen py-8 text-white bg-black">

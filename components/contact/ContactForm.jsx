@@ -1,6 +1,6 @@
 import { useState, useReducer } from 'react';
-import { validateMessage } from '../../utils/validations';
-import { sendMessage } from '../../services/api';
+import { validateMessage } from '../../lib/validations';
+import { sendMessage } from '../../lib/contact-api';
 
 import resultReducer from './ResultReducer';
 
@@ -59,13 +59,13 @@ const ContactForm = () => {
 
         const result = validateMessage(payload);
 
-        if(result.error) {
+        if(!result.success) {
 
             dispatch({
                 type: "VALIDATION_ERROR",
                 data: {
                     show: true,
-                    message: result.error.details[0].message,
+                    message: result.error.issues[0].message,
                     short: "Hey,",
                     type: "text-yellow-400"
                 }
@@ -75,7 +75,7 @@ const ContactForm = () => {
         }
 
         send()
-        
+
         return result;
     }
 

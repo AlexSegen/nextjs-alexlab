@@ -56,6 +56,38 @@ Seguimiento del progreso de [REFACTOR-PLAN.md](REFACTOR-PLAN.md). Cada fase se d
 
 ---
 
+---
+
+## Fase 2 — Capa de datos y dominio tipada ✅
+
+**Estado**: Completada
+**Build**: `yarn build` OK
+
+### Cambios realizados
+- Creado [types/index.ts](types/index.ts): `Project`, `ProjectMedia`, `ExperienceEntry`, `SiteConfig`, `CareerData`, `ContactPayload`.
+- Creado [data/site.ts](data/site.ts) — `siteConfig` (ex `ConfigContext.initialState`).
+- Creado [data/projects.ts](data/projects.ts) — `projects: Project[]` (ex `contexts/data.jsx`).
+- Creado [data/career.ts](data/career.ts) — `HARD_SKILLS`, `SOFT_SKILLS`, `TOOLS`, `EXPERIENCE` tipados (ex `contexts/data.jsx`).
+- Creado [lib/validations.ts](lib/validations.ts) — migrado de Joi a **Zod** (`contactMessageSchema` + `validateMessage`).
+- Creado [lib/contact-api.ts](lib/contact-api.ts) — `sendMessage` migrado desde `services/api.jsx`, URL del endpoint vía `process.env.NEXT_PUBLIC_CONTACT_API_URL` con fallback a Heroku. Incluye nota sobre el endpoint posiblemente caído (Fase 7).
+- Creado [.env.example](.env.example) documentando `NEXT_PUBLIC_CONTACT_API_URL`.
+
+### Decisión de implementación: sin shim intermedio
+El plan ofrecía un "shim" temporal de `ConfigContext` para fases intermedias. Se optó por la **migración directa** de todos los consumidores en esta misma fase (en vez de Fase 3/4), evitando código transitorio:
+- [components/Layout.jsx](components/Layout.jsx), [components/shared/social-list.jsx](components/shared/social-list.jsx), [components/home/latest-works.jsx](components/home/latest-works.jsx), [pages/career.jsx](pages/career.jsx), [pages/portfolio/[catslug].jsx](pages/portfolio/[catslug].jsx) — reemplazado `useContext(ConfigContext)` por imports directos de `data/site`, `data/projects`, `data/career`.
+- [pages/_app.jsx](pages/_app.jsx) — eliminado `ConfigContextProvider`.
+- [components/contact/ContactForm.jsx](components/contact/ContactForm.jsx) — actualizado a `lib/validations.ts` (zod `safeParse`, `result.error.issues[0].message`) y `lib/contact-api.ts`.
+
+### Eliminado
+- `contexts/` (ConfigContext.jsx, data.jsx), `services/` (api.jsx), `utils/` (validations.jsx).
+- Dependencia `@hapi/joi` (reemplazada por `zod`, ya agregada en esta fase).
+
+### Notas para próximas fases
+- Todos los datos estáticos ahora se importan como módulos ES tipados (`@/data/*`, `@/types`) — listos para Server Components en Fase 3.
+- `ContactForm.jsx` sigue en `.jsx`; su conversión a `.tsx` + hook (`use-contact-form.ts`) es parte de Fase 4.
+
+---
+
 ## Próxima fase
 
-Fase 2 — Capa de datos y dominio tipada (pendiente de aprobación).
+Fase 3 — Migración a App Router (en progreso, ejecución autónoma).

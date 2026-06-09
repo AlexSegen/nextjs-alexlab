@@ -3,9 +3,9 @@
    migración a App Router (Fase 3), que elimina este patrón por completo. */
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
-import { ConfigContext } from '../../contexts/ConfigContext';
+import { projects } from '../../data/projects';
 
 import Layout from "../../components/Layout";
 import ProjectDetails from '../../components/project';
@@ -14,8 +14,6 @@ const FilteredPortfolio = () => {
 
     const router = useRouter()
     const { catslug } = router.query
-
-    const { projects } = useContext(ConfigContext);
 
     const [filtered, setFiltered] = useState([]);
 
