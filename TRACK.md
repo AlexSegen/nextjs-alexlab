@@ -219,6 +219,29 @@ El plan sugería (de forma "recomendada, no bloqueante") reemplazar `react-slick
 
 ---
 
+---
+
+## Fase 6 — SEO y metadata ✅
+
+**Estado**: Completada (ejecución autónoma)
+**Build**: `yarn build` OK — 13 rutas estáticas generadas en `out/`, incluyendo `sitemap.xml` y `robots.txt`.
+
+### Cambios realizados
+- [app/layout.tsx](app/layout.tsx): `metadata` ampliado con `metadataBase: new URL('https://avivas.dev')`, `openGraph` (type, url, siteName, title, description, images: `/img/bg-hero2.jpg`) y `twitter` (`summary_large_image`). El JSON-LD `Person` ya existía desde la Fase 3.
+- Descripciones específicas agregadas a `export const metadata` / `generateMetadata`:
+  - [app/career/page.tsx](app/career/page.tsx) — "Professional experience, skills and tools of Alejandro Vivas, Frontend Developer."
+  - [app/portfolio/page.tsx](app/portfolio/page.tsx) — "Web and UI design projects by Alejandro Vivas, Frontend Developer."
+  - [app/portfolio/[catslug]/page.tsx](app/portfolio/[catslug]/page.tsx) — descripción dinámica por categoría.
+  - `app/portfolio/[catslug]/[id]/page.tsx` ya tenía título/descripción por proyecto desde la Fase 3.
+- Creado [app/sitemap.ts](app/sitemap.ts) (`export const dynamic = 'force-static'`, requerido para `output: 'export'`) — incluye `/`, `/career`, `/portfolio`, `/portfolio/web`, `/portfolio/ui` y todas las rutas de detalle de proyecto (`/portfolio/{catslug}/{id}`) generadas desde `data/projects`.
+- Creado [app/robots.ts](app/robots.ts) (`export const dynamic = 'force-static'`) — permite todo el rastreo y referencia `https://avivas.dev/sitemap.xml`.
+- Imagen Open Graph: se reutilizó el asset existente `/img/bg-hero2.jpg` (1920×1080) en vez de crear un nuevo `og-image.jpg`.
+
+### Notas para próximas fases
+- `sitemap.ts`/`robots.ts` requieren `export const dynamic = 'force-static'` en `output: 'export'`; sin esto el build falla (`Error: export const dynamic = "force-static"... not configured`).
+
+---
+
 ## Próxima fase
 
-Fase 6 — SEO y metadata (en progreso, ejecución autónoma).
+Fase 7 — Formulario de contacto: issue conocido (en progreso, ejecución autónoma).

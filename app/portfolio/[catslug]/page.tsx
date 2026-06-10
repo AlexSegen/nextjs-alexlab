@@ -21,6 +21,7 @@ export async function generateMetadata({
 
   return {
     title: `${catslug.toUpperCase()} Design`,
+    description: `${catslug.toUpperCase()} design projects by Alejandro Vivas, Frontend Developer.`,
   }
 }
 

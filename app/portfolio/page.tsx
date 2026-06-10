@@ -6,6 +6,7 @@ import ContactBar from '@/components/shared/contact-bar'
 
 export const metadata: Metadata = {
   title: 'Portfolio',
+  description: 'Web and UI design projects by Alejandro Vivas, Frontend Developer.',
 }
 
 export default function Portfolio() {

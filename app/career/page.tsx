@@ -9,6 +9,7 @@ import ExperienceItem from '@/components/career/experience-item'
 
 export const metadata: Metadata = {
   title: 'Career',
+  description: 'Professional experience, skills and tools of Alejandro Vivas, Frontend Developer.',
 }
 
 export default function Career() {

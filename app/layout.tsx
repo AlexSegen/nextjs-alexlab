@@ -8,11 +8,26 @@ import 'simple-line-icons/css/simple-line-icons.css'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://avivas.dev'),
   title: {
     default: siteConfig.title,
     template: '%s | Alejandro Vivas - Frontend Developer',
   },
   description: siteConfig.description,
+  openGraph: {
+    type: 'website',
+    url: 'https://avivas.dev',
+    siteName: 'Alejandro Vivas - Frontend Developer',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ['/img/bg-hero2.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ['/img/bg-hero2.jpg'],
+  },
 }
 
 const personJsonLd = {
