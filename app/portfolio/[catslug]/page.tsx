@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 import { projects } from '@/data/projects'
-import ProjectDetails from '@/components/project'
+import ProjectDetails from '@/components/portfolio/project-details'
 
 const CATEGORIES = ['web', 'ui'] as const
 

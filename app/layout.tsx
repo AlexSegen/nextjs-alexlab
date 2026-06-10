@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { siteConfig } from '@/data/site'
 import SiteShell from '@/components/layout/site-shell'
-import Header from '@/components/shared/header-alt'
-import Footer from '@/components/shared/footer'
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
 
 import 'simple-line-icons/css/simple-line-icons.css'
 import './globals.css'

@@ -136,6 +136,67 @@ El plan ofrecía un "shim" temporal de `ConfigContext` para fases intermedias. S
 
 ---
 
+---
+
+## Fase 4 — Modernización de componentes ✅
+
+**Estado**: Completada (ejecución autónoma)
+**Build**: `yarn build` OK — 11 rutas estáticas generadas en `out/`. Verificado con `npx serve out` (rutas válidas → 200, `/portfolio/zzz` → 404).
+
+### Cambios realizados
+
+#### Iconos extraídos a `components/ui/icons/`
+- [react-logo.tsx](components/ui/icons/react-logo.tsx), [vue-logo.tsx](components/ui/icons/vue-logo.tsx), [angular-logo.tsx](components/ui/icons/angular-logo.tsx) — extraídos de `hero.jsx`.
+- [check-icon.tsx](components/ui/icons/check-icon.tsx) — extraído de `components/project/index.jsx`, reutilizado también en `components/career/skill-badge.tsx`.
+- [github-icon.tsx](components/ui/icons/github-icon.tsx), [linkedin-icon.tsx](components/ui/icons/linkedin-icon.tsx), [twitter-icon.tsx](components/ui/icons/twitter-icon.tsx) — extraídos de `social-list.jsx`.
+
+#### Componente `Button`
+- Creado [components/ui/button.tsx](components/ui/button.tsx): variantes `default`/`primary` (mapean a `.button`/`.button.is-primary` de `globals.css`), soporta `as="link"` (renderiza `next/link`, incluye `target` para links externos) o `as="button"` (HTML nativo). Reemplaza los usos repetidos de `className="button is-primary ..."` en `hero.tsx`, `contact-bar.tsx`, `project-card.tsx` y `project-details.tsx`.
+
+#### Layout
+- [components/shared/header-alt.jsx](components/shared/header-alt.jsx) → [components/layout/header.tsx](components/layout/header.tsx) — tipado, sin cambios de comportamiento (sigue usando `useScrollPosition` y Headless UI `Menu`).
+- [components/shared/footer.jsx](components/shared/footer.jsx) → [components/layout/footer.tsx](components/layout/footer.tsx) — tipado, imports actualizados a rutas `@/`.
+- [app/layout.tsx](app/layout.tsx) actualizado para importar `Header`/`Footer` desde `components/layout/`.
+
+#### Home
+- [components/home/hero.jsx](components/home/hero.jsx) → [components/home/hero.tsx](components/home/hero.tsx) — SVGs de React/Vue/Angular extraídos a iconos, botones migrados a `<Button>`.
+- [components/home/about.jsx](components/home/about.jsx) → [components/home/about.tsx](components/home/about.tsx) — `SkillItem` tipado.
+- [components/home/latest-works.jsx](components/home/latest-works.jsx) dividido en:
+  - [components/home/latest-works.tsx](components/home/latest-works.tsx) — Server Component (sección + título), recibe `projects` desde `data/projects` y renderiza el carrusel.
+  - [components/portfolio/project-carousel.tsx](components/portfolio/project-carousel.tsx) — `"use client"`, encapsula `react-slick`.
+  - [components/portfolio/project-card.tsx](components/portfolio/project-card.tsx) — ex `Slide`, tipado con `Project`, usa `<Button>`.
+
+#### Shared
+- [components/shared/social-list.jsx](components/shared/social-list.jsx) → [components/shared/social-list.tsx](components/shared/social-list.tsx) — usa los iconos extraídos; eliminado `social-list.module.scss` (código muerto detectado en Fase 3).
+- [components/shared/contact-bar.jsx](components/shared/contact-bar.jsx) → [components/shared/contact-bar.tsx](components/shared/contact-bar.tsx) — props tipadas (`btnText`, `contentText`, `contentSubText?`, `isDark?`), botón migrado a `<Button variant="primary">`.
+
+#### Contacto
+- `ContactForm.jsx` + `ResultReducer.jsx` → [components/contact/contact-form.tsx](components/contact/contact-form.tsx) (presentación) + [components/contact/use-contact-form.ts](components/contact/use-contact-form.ts) (hook `useContactForm`, encapsula estado, validación con `lib/validations.ts` y envío con `lib/contact-api.ts`). `resultReducer` ahora tipado (`ResultState`/`ResultAction`).
+
+#### Portfolio
+- `components/project/index.jsx` → [components/portfolio/project-details.tsx](components/portfolio/project-details.tsx) — tipado con `Project`, `CheckIcon` extraído, botones migrados a `<Button>`. Referenciado desde `app/portfolio/[catslug]/page.tsx` y `app/portfolio/[catslug]/[id]/page.tsx`.
+
+#### Career
+- `Skill`/`ExperienceItem` (inline en `app/career/page.tsx` desde Fase 3) extraídos a [components/career/skill-badge.tsx](components/career/skill-badge.tsx) y [components/career/experience-item.tsx](components/career/experience-item.tsx) (tipado con `ExperienceEntry`).
+
+#### Config
+- [tailwind.config.js](tailwind.config.js): eliminado el glob `./pages/**/*.{js,ts,jsx,tsx}` (obsoleto desde Fase 3, `pages/` ya no existe).
+
+### Fix adicional
+- **`@types/react-slick` traía anidado `@types/react@19`**, incompatible con `@types/react@18` del proyecto (error `'Slider' cannot be used as a JSX component`). Se agregó `"resolutions": { "@types/react-slick/@types/react": "^18.3.31" }` en `package.json` para forzar la versión correcta.
+
+### Decisión: sin reemplazo de librerías opcionales
+El plan sugería (de forma "recomendada, no bloqueante") reemplazar `react-slick`/`slick-carousel` por `embla-carousel-react` y `simple-line-icons` por `@heroicons/react`. Se decidió **no realizar estos reemplazos**: son cambios de UI/dependencias de mayor riesgo visual sin posibilidad de verificación manual en este flujo autónomo, y el plan los marca explícitamente como no bloqueantes. Quedan documentados aquí como posible mejora futura.
+
+### Eliminado
+- Todo `components/project/`, `components/shared/header-alt.jsx`, `components/shared/footer.jsx`, `components/shared/social-list.jsx`, `components/shared/social-list.module.scss`, `components/shared/contact-bar.jsx`, `components/home/hero.jsx`, `components/home/about.jsx`, `components/home/latest-works.jsx`, `components/contact/ContactForm.jsx`, `components/contact/ResultReducer.jsx`.
+
+### Notas para próximas fases
+- Todos los componentes activos ahora son `.tsx` tipados. No quedan `.jsx` en `components/`.
+- Pendiente Fase 5: warnings `@next/next/no-img-element` en `about.tsx`, `project-card.tsx`, `project-details.tsx`, `contact-bar.tsx`, `app/career/page.tsx`, `app/portfolio/page.tsx`, `app/portfolio/[catslug]/page.tsx`.
+
+---
+
 ## Próxima fase
 
-Fase 4 — Modernización de componentes (en progreso, ejecución autónoma).
+Fase 5 — Imágenes y performance (en progreso, ejecución autónoma).

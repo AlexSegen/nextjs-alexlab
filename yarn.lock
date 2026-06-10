@@ -813,7 +813,14 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.7.tgz#b89ddf2cd83b4feafcc4e2ea41afdfb95a0d194f"
   integrity sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==
 
-"@types/react@^18.3.31":
+"@types/react-slick@^0.23.13":
+  version "0.23.13"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.13.tgz#037434e73a58063047b121e08565f7185d811f36"
+  integrity sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^18.3.31":
   version "18.3.31"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.31.tgz#b5e95e28ffcceab8d982f33f2eb076e17653c2a4"
   integrity sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw==

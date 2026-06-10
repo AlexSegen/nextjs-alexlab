@@ -2,6 +2,9 @@
   "name": "nextjs-alexlab",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "@types/react-slick/@types/react": "^18.3.31"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,6 +29,7 @@
     "@types/node": "^25.9.2",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
+    "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.0",
     "eslint": "^9",
     "eslint-config-next": "^16.2.9",

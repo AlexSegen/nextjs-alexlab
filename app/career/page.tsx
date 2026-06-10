@@ -3,52 +3,12 @@ import type { Metadata } from 'next'
 
 import { siteConfig } from '@/data/site'
 import { HARD_SKILLS, SOFT_SKILLS, TOOLS, EXPERIENCE } from '@/data/career'
+import SkillBadge from '@/components/career/skill-badge'
+import ExperienceItem from '@/components/career/experience-item'
 
 export const metadata: Metadata = {
   title: 'Career',
 }
-
-const Skill = ({ caption }: { caption: string }) => (
-  <span className="inline-flex items-center mr-3">
-    <svg
-      className="inline w-6 h-6 mr-2 text-green-400"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 13l4 4L19 7"
-      />
-    </svg>
-    {caption}
-  </span>
-)
-
-const ExperienceItem = ({
-  className,
-  period,
-  company,
-  description,
-  rol,
-}: {
-  className: string
-  period: string
-  company: string
-  description: string
-  rol: string
-}) => (
-  <div className={`p-4 mb-4 ${className} relative`}>
-    <span className="absolute w-4 h-4 bg-green-400 rounded-full top-14 -left-12"></span>
-    <span className="absolute transform rotate-90 -left-14 top-14">{period}</span>
-    <h4 className="mb-2 text-xl font-normal text-white">{company}</h4>
-    <p className="mb-2 text-base font-semibold text-blue-400">{rol}</p>
-    <p>{description}</p>
-  </div>
-)
 
 export default function Career() {
   const { linkedin } = siteConfig
@@ -135,7 +95,7 @@ export default function Career() {
                 <h3 className="mb-4 text-xl font-semibold text-white md:mb-10 md:text-3xl">Hard Skills</h3>
                 <div>
                   {HARD_SKILLS.map((caption) => (
-                    <Skill key={caption} caption={caption} />
+                    <SkillBadge key={caption} caption={caption} />
                   ))}
                 </div>
               </div>
@@ -146,7 +106,7 @@ export default function Career() {
                 <h3 className="mb-4 text-xl font-semibold text-white md:mb-10 md:text-3xl">Soft Skills</h3>
                 <div>
                   {SOFT_SKILLS.map((caption) => (
-                    <Skill key={caption} caption={caption} />
+                    <SkillBadge key={caption} caption={caption} />
                   ))}
                 </div>
               </div>
@@ -185,7 +145,7 @@ export default function Career() {
                 <h3 className="mb-4 text-xl font-semibold text-white md:mb-10 md:text-3xl">Tools I use</h3>
                 <div>
                   {TOOLS.map((caption) => (
-                    <Skill key={caption} caption={caption} />
+                    <SkillBadge key={caption} caption={caption} />
                   ))}
                 </div>
               </div>
