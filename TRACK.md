@@ -258,6 +258,33 @@ El plan sugería (de forma "recomendada, no bloqueante") reemplazar `react-slick
 
 ---
 
-## Próxima fase
+---
 
-Fase 8 — Limpieza final y verificación (en progreso, ejecución autónoma).
+## Fase 8 — Limpieza final y verificación ✅
+
+**Estado**: Completada (ejecución autónoma)
+**Build**: `yarn lint` (0 warnings/errores) y `yarn build` OK — 13 rutas estáticas en `out/`.
+
+### Verificaciones realizadas
+- `pages/`, `contexts/`, `services/`, `utils/`, `styles/` no existen (eliminados en fases previas).
+- Sin referencias a `ConfigContext` ni `@hapi/joi` en el código fuente.
+- `react-slick` sigue presente de forma intencional (ver decisión de Fase 4: no se reemplazó por `embla-carousel-react`), usado solo en `components/portfolio/project-carousel.tsx` y `project-details.tsx`.
+- `npx serve out` — verificación manual de todas las rutas:
+  - `/`, `/career`, `/portfolio`, `/portfolio/web`, `/portfolio/ui`, `/portfolio/web/3`, `/portfolio/ui/1`, `/portfolio/ui/2` → 200
+  - `/portfolio/zzz` → 404
+  - `/sitemap.xml`, `/robots.txt` → 200
+  - Enlaces "Project details" en `/portfolio/web` apuntan correctamente a `/portfolio/web/3` (sin rutas rotas `/portfolio/details/*`).
+
+### Cambios realizados
+- [CLAUDE.md](CLAUDE.md): reescrito por completo para reflejar la arquitectura post-refactor — App Router, TypeScript estricto, nuevas carpetas `data/`, `lib/`, `hooks/`, `types/`, estructura de `components/`, `next.config.ts` (`images.unoptimized`, `output: 'export'`), comandos (`yarn lint`, `yarn format`), notas de Next 15 (`params` async, `sitemap.ts`/`robots.ts` con `dynamic = 'force-static'`) y la sección "Known issues" del formulario de contacto.
+
+---
+
+## Refactorización completada ✅
+
+Todas las fases (0–8) del [REFACTOR-PLAN.md](REFACTOR-PLAN.md) fueron ejecutadas. El proyecto es ahora Next.js 15 App Router + TypeScript estricto, manteniendo `output: 'export'` y compatibilidad total con `yarn deploy` (S3 + CloudFront), sin cambios de diseño visual.
+
+### Pendientes documentados (fuera de alcance del refactor de arquitectura)
+- Reemplazo opcional de `react-slick`/`slick-carousel` por `embla-carousel-react` (Fase 4, recomendado no bloqueante).
+- Reemplazo opcional de `simple-line-icons` por `@heroicons/react` para los iconos del formulario de contacto (Fase 4, recomendado no bloqueante).
+- Backend del formulario de contacto (endpoint Heroku probablemente caído) — ver "Known issues" en `CLAUDE.md` (Fase 7).
