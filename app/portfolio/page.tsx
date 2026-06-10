@@ -1,0 +1,57 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+
+import ContactBar from '@/components/shared/contact-bar'
+
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'Web and UI design projects by Alejandro Vivas, Frontend Developer.',
+}
+
+export default function Portfolio() {
+  return (
+    <>
+      <div className="relative p-5 overflow-hidden text-center bg-black">
+        <div className="relative z-10">
+          <h1 className="text-4xl font-bold text-white">Portfolio</h1>
+          <div className="p-4 text-sm">
+            <Link href="/" className="mr-4 font-semibold text-gray-400 hover:text-gray-300">
+              Home
+            </Link>
+            <span className="font-semibold text-gray-500">Portfolio</span>
+          </div>
+        </div>
+        <Image
+          src="/img/coding_workspace.jpg"
+          className="absolute top-0 w-full h-auto transform -translate-y-1/2 opacity-20"
+          alt=""
+          width={1000}
+          height={473}
+        />
+      </div>
+      <div className="container grid-cols-10 px-4 py-10 mx-auto text-gray-400 md:py-20 md:px-10 md:grid">
+        <Link
+          href="/portfolio/web"
+          className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900"
+        >
+          <span className="text-gray-400">Web</span>Design
+        </Link>
+
+        <Link
+          href="/portfolio/ui"
+          className="flex items-center justify-center w-full min-h-full col-span-5 py-10 mb-6 text-5xl font-bold text-center text-white border-2 border-gray-500 border-dashed md:py-40 border-opacity-20 hover:bg-gray-900"
+        >
+          <span className="text-gray-400">UI</span>Design
+        </Link>
+      </div>
+
+      <ContactBar
+        isDark={true}
+        btnText="Let's talk"
+        contentText="Do you have a new project idea?"
+        contentSubText="I could help you make it true."
+      />
+    </>
+  )
+}

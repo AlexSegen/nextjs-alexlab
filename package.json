@@ -2,31 +2,41 @@
   "name": "nextjs-alexlab",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "@types/react-slick/@types/react": "^18.3.31"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
     "deploy": "yarn build && aws s3 sync out/ s3://avivas.dev --delete && aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths '/*'"
   },
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "@headlessui/react": "^2.2.9",
     "@tailwindcss/forms": "^0.5.0",
     "next": "^15.0.0",
-    "prismjs": "^1.30.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-on-screen": "^2.1.1",
     "react-slick": "^0.31.0",
-    "react-wow": "^1.0.0",
     "sass": "^1.97.3",
     "simple-line-icons": "^2.5.5",
     "slick-carousel": "^1.8.1",
-    "toastmejs": "^1.2.7"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/node": "^25.9.2",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.0",
+    "eslint": "^9",
+    "eslint-config-next": "^16.2.9",
+    "eslint-config-prettier": "^10.1.8",
     "postcss": "^8.5.8",
-    "tailwindcss": "^3.0.0"
+    "prettier": "^3.8.4",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^6.0.3"
   }
 }
