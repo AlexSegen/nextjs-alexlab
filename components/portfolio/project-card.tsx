@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Button from '@/components/ui/button'
 import type { Project } from '@/types'
 
@@ -10,7 +11,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
 
         <p className="mb-5 text-gray-400 md:mb-10">{project.description}</p>
 
-        <img className="block mx-auto my-8" src={project.media.img} alt={project.title} />
+        <Image className="block mx-auto my-8" src={project.media.img} alt={project.title} width={2620} height={1535} />
 
         <div>
           <Button as="link" href={`/portfolio/${project.catslug}/${project.id}`} variant="primary" className="block mb-4 mr-2 text-lg">
@@ -25,7 +26,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
 
     <div className="hidden col-span-12 p-4 md:block md:col-span-8">
       <div className="p-8">
-        <img src={project.media.img} alt={project.title} />
+        <Image src={project.media.img} alt={project.title} width={2620} height={1535} />
       </div>
     </div>
   </div>

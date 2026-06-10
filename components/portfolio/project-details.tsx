@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -72,7 +73,7 @@ const ProjectDetails = ({ project }: { project: Project }) => (
       <div className="p-2 md:p-8">
         <Slider {...settings}>
           {project.photos.map((photo, index) => (
-            <img key={'photo_' + index} src={photo} alt={project.title} />
+            <Image key={'photo_' + index} src={photo} alt={project.title} width={2620} height={1535} />
           ))}
         </Slider>
       </div>

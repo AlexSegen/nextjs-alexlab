@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -55,10 +56,12 @@ export default async function FilteredPortfolio({
             </span>
           </div>
         </div>
-        <img
+        <Image
           src="/img/coding_workspace.jpg"
-          className="absolute top-0 w-full transform -translate-y-1/2 opacity-20"
+          className="absolute top-0 w-full h-auto transform -translate-y-1/2 opacity-20"
           alt=""
+          width={1000}
+          height={473}
         />
       </div>
       <div className="container py-5 mx-auto text-gray-400 md:py-20">

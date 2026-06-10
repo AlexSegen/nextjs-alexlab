@@ -197,6 +197,28 @@ El plan sugería (de forma "recomendada, no bloqueante") reemplazar `react-slick
 
 ---
 
+---
+
+## Fase 5 — Imágenes y performance ✅
+
+**Estado**: Completada (ejecución autónoma)
+**Build**: `yarn build` OK — sin warnings `@next/next/no-img-element`. Verificado con `npx serve out` (rutas `/`, `/career`, `/portfolio`, `/portfolio/web/3` → 200, imágenes `/img/tech/*.png` servidas correctamente con `data-nimg`).
+
+### Cambios realizados
+- [next.config.ts](next.config.ts): agregado `images: { unoptimized: true }` (requerido para `output: 'export'`, S3/CloudFront no ejecuta el optimizador de Next).
+- Reemplazados todos los `<img>` por `next/image`, con `width`/`height` según las dimensiones reales de cada asset:
+  - [components/home/about.tsx](components/home/about.tsx) — logos de `SkillItem` (150×150).
+  - [components/portfolio/project-card.tsx](components/portfolio/project-card.tsx) — `project.media.img` (2620×1535), 2 instancias.
+  - [components/portfolio/project-details.tsx](components/portfolio/project-details.tsx) — fotos del carrusel (2620×1535).
+  - [components/shared/contact-bar.tsx](components/shared/contact-bar.tsx) — `collage.jpg` (1920×480), agregado `h-auto` junto a `w-full` para mantener el aspect ratio.
+  - [app/career/page.tsx](app/career/page.tsx), [app/portfolio/page.tsx](app/portfolio/page.tsx), [app/portfolio/[catslug]/page.tsx](app/portfolio/[catslug]/page.tsx) — `coding_workspace.jpg` (1000×473), agregado `h-auto`.
+- El `<video>` del Hero no requiere cambios (no es `<img>`, fuera del alcance de `next/image`); no se asignó `priority` porque no hay imagen above-the-fold migrada en esa sección.
+
+### Notas para próximas fases
+- Con `images.unoptimized: true`, `next/image` actúa principalmente como wrapper semántico (sin optimización en build) — necesario para mantener compatibilidad con el export estático a S3/CloudFront.
+
+---
+
 ## Próxima fase
 
-Fase 5 — Imágenes y performance (en progreso, ejecución autónoma).
+Fase 6 — SEO y metadata (en progreso, ejecución autónoma).

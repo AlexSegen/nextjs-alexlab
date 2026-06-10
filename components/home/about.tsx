@@ -1,10 +1,14 @@
+import Image from 'next/image'
+
 const SkillItem = ({ name, logo, className = '' }: { name: string; logo: string; className?: string }) => (
   <div className="w-full col-span-4 md:col-span-2">
     <div className={`transform p-6 text-center text-gray-400 rounded  mx-auto ${className}`}>
-      <img
+      <Image
         className="block mx-auto transition duration-75 opacity-50 hover:opacity-80 filter grayscale hover:filter-none hover:contrast-50"
         src={'/img/tech/' + logo}
         alt={name}
+        width={150}
+        height={150}
       />
       <span className="">{name}</span>
     </div>

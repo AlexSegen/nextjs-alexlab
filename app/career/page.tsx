@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -26,10 +27,12 @@ export default function Career() {
             <span className="font-semibold text-gray-500">Career</span>
           </div>
         </div>
-        <img
+        <Image
           src="/img/coding_workspace.jpg"
-          className="absolute top-0 w-full transform -translate-y-1/2 opacity-20"
+          className="absolute top-0 w-full h-auto transform -translate-y-1/2 opacity-20"
           alt="cover"
+          width={1000}
+          height={473}
         />
       </div>
 

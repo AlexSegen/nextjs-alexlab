@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Button from '@/components/ui/button'
 
 interface ContactBarProps {
@@ -20,7 +21,13 @@ const ContactBar = ({ btnText, contentText, contentSubText }: ContactBarProps) =
         </Button>
       </div>
     </div>
-    <img className="absolute top-0 object-fill w-full opacity-10" src="/img/collage.jpg" alt="" />
+    <Image
+      className="absolute top-0 object-fill w-full h-auto opacity-10"
+      src="/img/collage.jpg"
+      alt=""
+      width={1920}
+      height={480}
+    />
   </div>
 )
 

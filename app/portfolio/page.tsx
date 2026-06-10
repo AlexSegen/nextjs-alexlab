@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -20,10 +21,12 @@ export default function Portfolio() {
             <span className="font-semibold text-gray-500">Portfolio</span>
           </div>
         </div>
-        <img
+        <Image
           src="/img/coding_workspace.jpg"
-          className="absolute top-0 w-full transform -translate-y-1/2 opacity-20"
+          className="absolute top-0 w-full h-auto transform -translate-y-1/2 opacity-20"
           alt=""
+          width={1000}
+          height={473}
         />
       </div>
       <div className="container grid-cols-10 px-4 py-10 mx-auto text-gray-400 md:py-20 md:px-10 md:grid">
