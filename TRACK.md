@@ -242,6 +242,22 @@ El plan sugería (de forma "recomendada, no bloqueante") reemplazar `react-slick
 
 ---
 
+---
+
+## Fase 7 — Formulario de contacto: issue conocido ✅
+
+**Estado**: Completada (ejecución autónoma)
+**Build**: `yarn build` OK.
+
+### Cambios realizados
+- [CLAUDE.md](CLAUDE.md): nueva sección "Known issues" documentando que el endpoint de contacto (`https://pixelagil.herokuapp.com/api`, fallback en `lib/contact-api.ts`) probablemente está caído (Heroku eliminó dynos free en nov-2022) y que el formulario de contacto puede no estar enviando mensajes actualmente. Incluye la recomendación de reemplazo vía AWS Lambda + Function URL (SES/Resend) o un servicio de formularios de terceros (Web3Forms, Formspree).
+- La parametrización vía `NEXT_PUBLIC_CONTACT_API_URL` y el comentario en [lib/contact-api.ts](lib/contact-api.ts) ya se habían realizado en la Fase 2; esta fase solo agrega la documentación faltante en `CLAUDE.md`.
+
+### Notas para próximas fases
+- La implementación del reemplazo del backend de contacto (Lambda/SES o servicio de terceros) queda fuera del alcance de este refactor de arquitectura, según lo definido en el plan.
+
+---
+
 ## Próxima fase
 
-Fase 7 — Formulario de contacto: issue conocido (en progreso, ejecución autónoma).
+Fase 8 — Limpieza final y verificación (en progreso, ejecución autónoma).

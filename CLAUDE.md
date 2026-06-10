@@ -96,3 +96,14 @@ yarn deploy
 ### Adding server-side logic
 
 API routes are not supported in static export. For server-side processing (webhooks, email, etc.), use **AWS Lambda + API Gateway** and call the endpoint directly from the frontend.
+
+---
+
+## Known issues
+
+### Contact form endpoint likely down
+
+`lib/contact-api.ts` posts to `${NEXT_PUBLIC_CONTACT_API_URL ?? 'https://pixelagil.herokuapp.com/api'}/leads/set`. The Heroku fallback host is **probably unreachable** — Heroku removed free dynos in Nov 2022 — so the contact form (`components/contact/contact-form.tsx`) likely does not deliver messages currently.
+
+- The endpoint is configurable via `NEXT_PUBLIC_CONTACT_API_URL` (see `.env.example`).
+- **Recommended fix (out of scope for the architecture refactor)**: replace the endpoint with an AWS Lambda + Function URL that forwards the payload via SES or a transactional provider (e.g. Resend), consistent with the "Adding server-side logic" guidance above. A simpler alternative is a third-party form backend (Web3Forms, Formspree) requiring no custom backend.
